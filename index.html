@@ -277,7 +277,7 @@
         
           <h1 class="post-title" itemprop="name headline">
                 
-                <a class="post-title-link" href="/2020/04/10/hexo-github-%E6%90%AD%E5%BB%BA%E5%8D%9A%E5%AE%A2/" itemprop="url">hexo + github 搭建博客</a></h1>
+                <a class="post-title-link" href="/2020/04/10/hexo-github-%E6%90%AD%E5%BB%BA%E5%8D%9A%E5%AE%A2/" itemprop="url">hexo + github 搭建博客 （一）</a></h1>
         
 
         <div class="post-meta">
@@ -321,7 +321,7 @@
                   <span class="post-meta-item-text">字数统计&#58;</span>
                 
                 <span title="字数统计">
-                  0
+                  427
                 </span>
               
 
@@ -360,7 +360,41 @@
       
         
           
-            
+            <h2 id="一-环境搭建"><a href="#一-环境搭建" class="headerlink" title="一. 环境搭建"></a>一. 环境搭建</h2><ol>
+<li><p>下载<a href="https://nodejs.org/zh-cn/" target="_blank" rel="noopener">node.js</a> 并且安装，打开终端 输入 <code>node -v</code> 查看是否安装成功</p>
+</li>
+<li><p>安装 hexo <code>npm install -g hexo-cli</code>，安装好之后输入 <code>hexo -v</code>查看是否安装成功</p>
+<ul>
+<li>在mac电脑下输入 <code>sudo su</code>  命令可以进入root用户</li>
+<li>如果用npm 安装太慢，可以用淘宝镜像 <code>npm install -g cnmp —registry=https://registry.npm.taobao.org</code> </li>
+</ul>
+</li>
+<li><p>建立blog目录  <code>mkdir blog</code> <font size=2><em>(之后对于博客的操作都在此文件夹，如果有问题进行不下去，把此文件夹删掉重来即可)</em> </font></p>
+</li>
+<li><p>进入blog目录  <code>cd blog/</code> 初始化hexo <code>hexo init</code>,可以输入 <code>ls -l</code>查看生产了哪些文件</p>
+</li>
+<li><p>启动博客 <code>hexo s</code> 默认情况下，访问网址为： <a href="http://localhost:4000/" target="_blank" rel="noopener">http://localhost:4000/</a></p>
+</li>
+</ol>
+<hr>
+<h2 id="二-给博客增加一篇文章"><a href="#二-给博客增加一篇文章" class="headerlink" title="二. 给博客增加一篇文章"></a>二. 给博客增加一篇文章</h2><h5 id="1-新建一篇文章-文章会生成在文件-source-posts-下"><a href="#1-新建一篇文章-文章会生成在文件-source-posts-下" class="headerlink" title="1 新建一篇文章  文章会生成在文件 /source/_posts  下"></a>1 新建一篇文章 <font size=2 color=gray> 文章会生成在文件 /source/_posts  下</font></h5><figure class="highlight bash"><table><tr><td class="gutter"><pre><span class="line">1</span><br></pre></td><td class="code"><pre><span class="line">hexo n <span class="string">'文章名'</span></span><br></pre></td></tr></table></figure>
+<h5 id="2-进入文章目录，用vim修改它，也可以在编辑器直接编辑"><a href="#2-进入文章目录，用vim修改它，也可以在编辑器直接编辑" class="headerlink" title="2 进入文章目录，用vim修改它，也可以在编辑器直接编辑"></a>2 进入文章目录，用vim修改它，也可以在编辑器直接编辑</h5><figure class="highlight bash"><table><tr><td class="gutter"><pre><span class="line">1</span><br></pre></td><td class="code"><pre><span class="line">vim 文章名</span><br></pre></td></tr></table></figure>
+<ul>
+<li>按 i 进入insert模式</li>
+<li>编辑好之后按 <code>esc</code> 键 退出，输入 <code>:wq</code> 保存<h5 id="3-退回blog文件夹下进行以下操作在本地更新博客"><a href="#3-退回blog文件夹下进行以下操作在本地更新博客" class="headerlink" title="3 退回blog文件夹下进行以下操作在本地更新博客"></a>3 退回blog文件夹下进行以下操作在本地更新博客</h5><figure class="highlight bash"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br></pre></td><td class="code"><pre><span class="line">hexo clean  清除缓存文件 (db.json) 和已生成的静态文件 (public)</span><br><span class="line">hexo g     生成静态文件。</span><br><span class="line">hexo s     启动服务器。</span><br></pre></td></tr></table></figure>
+
+</li>
+</ul>
+<h2 id="三-部署到github"><a href="#三-部署到github" class="headerlink" title="三. 部署到github"></a>三. 部署到github</h2><h5 id="1-新建github仓库-，仓库名一定是-你的github昵称-github-io"><a href="#1-新建github仓库-，仓库名一定是-你的github昵称-github-io" class="headerlink" title="1 新建github仓库 ，仓库名一定是 你的github昵称. + github.io"></a>1 新建github仓库 ，仓库名一定是 你的github昵称. + github.io</h5><h5 id="2-安装git部署插件，进入blog目录，输入"><a href="#2-安装git部署插件，进入blog目录，输入" class="headerlink" title="2 安装git部署插件，进入blog目录，输入"></a>2 安装git部署插件，进入blog目录，输入</h5><figure class="highlight bash"><table><tr><td class="gutter"><pre><span class="line">1</span><br></pre></td><td class="code"><pre><span class="line">npm install —save hexo-deployer-git</span><br></pre></td></tr></table></figure>
+<h5 id="3-配置-config-yml-文件，在最底下-deploy-中-修改type并增加repo和branch"><a href="#3-配置-config-yml-文件，在最底下-deploy-中-修改type并增加repo和branch" class="headerlink" title="3 配置 _config.yml 文件，在最底下 deploy 中 修改type并增加repo和branch"></a>3 配置 _config.yml 文件，在最底下 <code>deploy</code> 中 修改<code>type</code>并增加<code>repo</code>和<code>branch</code></h5><figure class="highlight bash"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br></pre></td><td class="code"><pre><span class="line"><span class="built_in">type</span>: git</span><br><span class="line">repo: github的仓库地址</span><br><span class="line">branch: master</span><br></pre></td></tr></table></figure>
+<h5 id="4-部署到远端-输入仓库名即可访问博客-（第一次会让你输入github账号密码）"><a href="#4-部署到远端-输入仓库名即可访问博客-（第一次会让你输入github账号密码）" class="headerlink" title="4 部署到远端,输入仓库名即可访问博客  （第一次会让你输入github账号密码）"></a>4 部署到远端,输入仓库名即可访问博客 <font size=2 color=gray> （第一次会让你输入github账号密码）</font></h5><figure class="highlight bash"><table><tr><td class="gutter"><pre><span class="line">1</span><br></pre></td><td class="code"><pre><span class="line">hexo d</span><br></pre></td></tr></table></figure>
+
+
+
+
+
+
+
           
         
       
@@ -617,6 +651,15 @@
             
 
             
+              
+              
+              <div class="site-state-item site-state-tags">
+                <a href="/tags/index.html">
+                  <span class="site-state-item-count">1</span>
+                  <span class="site-state-item-name">标签</span>
+                </a>
+              </div>
+            
 
           </nav>
 
@@ -661,7 +704,7 @@
 
 <div class="theme-info">
   <div class="powered-by"></div>
-  <span class="post-count">博客全站共73字</span>
+  <span class="post-count">博客全站共500字</span>
 </div>
 
 
