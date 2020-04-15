@@ -1,7 +1,9 @@
 ---
 title: hexo + github 搭建博客 （一）
 date: 2020-04-10 16:51:52
-tags: 博客
+tags: hexo
+categories:
+- hexo
 ---
 ## 一. 环境搭建
 1. 下载[node.js](https://nodejs.org/zh-cn/) 并且安装，打开终端 输入 `node -v` 查看是否安装成功

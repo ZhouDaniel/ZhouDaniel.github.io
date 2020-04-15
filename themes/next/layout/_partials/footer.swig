@@ -32,11 +32,9 @@
 {% endif %}
 
 <div class="powered-by">
-<i class="fa fa-user-md"></i><span id="busuanzi_container_site_uv">
-  您是本站第<span id="busuanzi_value_site_uv"></span>位访客
-</span>
+<i class="fa fa-user-md"></i>
+  您是本站第<span id="busuanzi_value_site_pv"></span>位访客
 </div>
-
 
 {% if theme.footer.custom_text %}
   <div class="footer-custom">{#

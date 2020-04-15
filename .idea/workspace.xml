@@ -2,19 +2,22 @@
 <project version="4">
   <component name="ChangeListManager">
     <list default="true" id="f62a7c13-5987-4345-8576-25fad495641c" name="Default Changelist" comment="">
-      <change afterPath="$PROJECT_DIR$/themes/next/source/dist/music.js" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/themes/next/_config.yml" beforeDir="false" afterPath="$PROJECT_DIR$/themes/next/_config.yml" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/themes/next/layout/_layout.swig" beforeDir="false" afterPath="$PROJECT_DIR$/themes/next/layout/_layout.swig" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/themes/next/layout/_partials/footer.swig" beforeDir="false" afterPath="$PROJECT_DIR$/themes/next/layout/_partials/footer.swig" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/themes/next/source/css/_common/components/sidebar/sidebar-author.styl" beforeDir="false" afterPath="$PROJECT_DIR$/themes/next/source/css/_common/components/sidebar/sidebar-author.styl" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/.idea/vcs.xml" beforeDir="false" afterPath="$PROJECT_DIR$/.idea/vcs.xml" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/.idea/workspace.xml" beforeDir="false" afterPath="$PROJECT_DIR$/.idea/workspace.xml" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/source/categories/index.md" beforeDir="false" afterPath="$PROJECT_DIR$/source/categories/index.md" afterDir="false" />
     </list>
     <option name="SHOW_DIALOG" value="false" />
     <option name="HIGHLIGHT_CONFLICTS" value="true" />
     <option name="HIGHLIGHT_NON_ACTIVE_CHANGELIST" value="false" />
     <option name="LAST_RESOLUTION" value="IGNORE" />
   </component>
+  <component name="FavoritesManager">
+    <favorites_list name="Unnamed">
+      <favorite_root url="file://$PROJECT_DIR$/ZhouDaniel.github.io/1.html" type="psiFile" klass="com.intellij.ide.projectView.impl.nodes.PsiFileNode" />
+    </favorites_list>
+  </component>
   <component name="Git.Settings">
-    <option name="RECENT_GIT_ROOT_PATH" value="$PROJECT_DIR$/themes/next" />
+    <option name="RECENT_GIT_ROOT_PATH" value="$PROJECT_DIR$" />
   </component>
   <component name="ProjectId" id="1aJMeZecnqAQ0F5B2e8HapYutX5" />
   <component name="ProjectLevelVcsManager" settingsEditedManually="true" />
@@ -26,7 +29,23 @@
   <component name="PropertiesComponent">
     <property name="RunOnceActivity.ShowReadmeOnStart" value="true" />
     <property name="WebServerToolWindowFactoryState" value="false" />
-    <property name="last_opened_file_path" value="$PROJECT_DIR$" />
+    <property name="last_opened_file_path" value="$PROJECT_DIR$/ZhouDaniel.github.io" />
+    <property name="settings.editor.selected.configurable" value="preferences.pluginManager" />
+  </component>
+  <component name="RecentsManager">
+    <key name="CopyFile.RECENT_KEYS">
+      <recent name="$PROJECT_DIR$/ZhouDaniel.github.io" />
+    </key>
+  </component>
+  <component name="RunManager">
+    <configuration name="1.html" type="JavascriptDebugType" temporary="true" nameIsGenerated="true" uri="http://localhost:63343/blog/ZhouDaniel.github.io/1.html" useBuiltInWebServerPort="true">
+      <method v="2" />
+    </configuration>
+    <recent_temporary>
+      <list>
+        <item itemvalue="JavaScript Debug.1.html" />
+      </list>
+    </recent_temporary>
   </component>
   <component name="SvnConfiguration">
     <configuration />
@@ -40,6 +59,7 @@
       <updated>1586449338431</updated>
       <workItem from="1586449340057" duration="13170000" />
       <workItem from="1586754550759" duration="212000" />
+      <workItem from="1586796780221" duration="5067000" />
     </task>
     <servers />
   </component>
@@ -47,14 +67,108 @@
     <option name="version" value="1" />
   </component>
   <component name="WindowStateProjectService">
-    <state x="237" y="260" key="#com.intellij.fileTypes.FileTypeChooser" timestamp="1586458473943">
+    <state x="237" y="260" key="#com.intellij.fileTypes.FileTypeChooser" timestamp="1586867731343">
       <screen x="0" y="0" width="1440" height="900" />
     </state>
-    <state x="237" y="260" key="#com.intellij.fileTypes.FileTypeChooser/0.0.1440.900@0.0.1440.900" timestamp="1586458473943" />
-    <state x="200" y="91" width="909" height="740" key="find.popup" timestamp="1586453693894">
+    <state x="237" y="260" key="#com.intellij.fileTypes.FileTypeChooser/0.0.1440.900@0.0.1440.900" timestamp="1586867731343" />
+    <state x="301" y="55" key="CommitChangelistDialog2" timestamp="1586868214602">
       <screen x="0" y="0" width="1440" height="900" />
     </state>
-    <state x="200" y="91" width="909" height="740" key="find.popup/0.0.1440.900@0.0.1440.900" timestamp="1586453693894" />
+    <state x="301" y="55" key="CommitChangelistDialog2/0.0.1440.900@0.0.1440.900" timestamp="1586868214602" />
+    <state width="1419" height="245" key="GridCell.Tab.0.bottom" timestamp="1586869505655">
+      <screen x="0" y="0" width="1440" height="900" />
+    </state>
+    <state width="1419" height="245" key="GridCell.Tab.0.bottom/0.0.1440.900@0.0.1440.900" timestamp="1586869505655" />
+    <state width="1419" height="245" key="GridCell.Tab.0.center" timestamp="1586869505654">
+      <screen x="0" y="0" width="1440" height="900" />
+    </state>
+    <state width="1419" height="245" key="GridCell.Tab.0.center/0.0.1440.900@0.0.1440.900" timestamp="1586869505654" />
+    <state width="1419" height="245" key="GridCell.Tab.0.left" timestamp="1586869505653">
+      <screen x="0" y="0" width="1440" height="900" />
+    </state>
+    <state width="1419" height="245" key="GridCell.Tab.0.left/0.0.1440.900@0.0.1440.900" timestamp="1586869505653" />
+    <state width="1419" height="245" key="GridCell.Tab.0.right" timestamp="1586869505654">
+      <screen x="0" y="0" width="1440" height="900" />
+    </state>
+    <state width="1419" height="245" key="GridCell.Tab.0.right/0.0.1440.900@0.0.1440.900" timestamp="1586869505654" />
+    <state width="1419" height="245" key="GridCell.Tab.1.bottom" timestamp="1586869505657">
+      <screen x="0" y="0" width="1440" height="900" />
+    </state>
+    <state width="1419" height="245" key="GridCell.Tab.1.bottom/0.0.1440.900@0.0.1440.900" timestamp="1586869505657" />
+    <state width="1419" height="245" key="GridCell.Tab.1.center" timestamp="1586869505656">
+      <screen x="0" y="0" width="1440" height="900" />
+    </state>
+    <state width="1419" height="245" key="GridCell.Tab.1.center/0.0.1440.900@0.0.1440.900" timestamp="1586869505656" />
+    <state width="1419" height="245" key="GridCell.Tab.1.left" timestamp="1586869505656">
+      <screen x="0" y="0" width="1440" height="900" />
+    </state>
+    <state width="1419" height="245" key="GridCell.Tab.1.left/0.0.1440.900@0.0.1440.900" timestamp="1586869505656" />
+    <state width="1419" height="245" key="GridCell.Tab.1.right" timestamp="1586869505657">
+      <screen x="0" y="0" width="1440" height="900" />
+    </state>
+    <state width="1419" height="245" key="GridCell.Tab.1.right/0.0.1440.900@0.0.1440.900" timestamp="1586869505657" />
+    <state width="1419" height="303" key="GridCell.Tab.2.bottom" timestamp="1586869505644">
+      <screen x="0" y="0" width="1440" height="900" />
+    </state>
+    <state width="1419" height="303" key="GridCell.Tab.2.bottom/0.0.1440.900@0.0.1440.900" timestamp="1586869505644" />
+    <state width="1419" height="303" key="GridCell.Tab.2.center" timestamp="1586869505644">
+      <screen x="0" y="0" width="1440" height="900" />
+    </state>
+    <state width="1419" height="303" key="GridCell.Tab.2.center/0.0.1440.900@0.0.1440.900" timestamp="1586869505644" />
+    <state width="1419" height="303" key="GridCell.Tab.2.left" timestamp="1586869505643">
+      <screen x="0" y="0" width="1440" height="900" />
+    </state>
+    <state width="1419" height="303" key="GridCell.Tab.2.left/0.0.1440.900@0.0.1440.900" timestamp="1586869505643" />
+    <state width="1419" height="303" key="GridCell.Tab.2.right" timestamp="1586869505644">
+      <screen x="0" y="0" width="1440" height="900" />
+    </state>
+    <state width="1419" height="303" key="GridCell.Tab.2.right/0.0.1440.900@0.0.1440.900" timestamp="1586869505644" />
+    <state width="1419" height="303" key="GridCell.Tab.3.bottom" timestamp="1586869505646">
+      <screen x="0" y="0" width="1440" height="900" />
+    </state>
+    <state width="1419" height="303" key="GridCell.Tab.3.bottom/0.0.1440.900@0.0.1440.900" timestamp="1586869505646" />
+    <state width="1419" height="303" key="GridCell.Tab.3.center" timestamp="1586869505645">
+      <screen x="0" y="0" width="1440" height="900" />
+    </state>
+    <state width="1419" height="303" key="GridCell.Tab.3.center/0.0.1440.900@0.0.1440.900" timestamp="1586869505645" />
+    <state width="1419" height="303" key="GridCell.Tab.3.left" timestamp="1586869505645">
+      <screen x="0" y="0" width="1440" height="900" />
+    </state>
+    <state width="1419" height="303" key="GridCell.Tab.3.left/0.0.1440.900@0.0.1440.900" timestamp="1586869505645" />
+    <state width="1419" height="303" key="GridCell.Tab.3.right" timestamp="1586869505646">
+      <screen x="0" y="0" width="1440" height="900" />
+    </state>
+    <state width="1419" height="303" key="GridCell.Tab.3.right/0.0.1440.900@0.0.1440.900" timestamp="1586869505646" />
+    <state x="241" y="21" key="SettingsEditor" timestamp="1586868789845">
+      <screen x="0" y="0" width="1440" height="900" />
+    </state>
+    <state x="241" y="21" key="SettingsEditor/0.0.1440.900@0.0.1440.900" timestamp="1586868789845" />
+    <state x="241" y="42" key="SettingsEditor/0.23.1440.797@0.23.1440.797" timestamp="1586864369854" />
+    <state x="450" y="200" width="540" height="524" key="StructurePopup" timestamp="1586868524256">
+      <screen x="0" y="0" width="1440" height="900" />
+    </state>
+    <state x="450" y="200" width="540" height="524" key="StructurePopup/0.0.1440.900@0.0.1440.900" timestamp="1586868524256" />
+    <state width="500" height="445" key="SwitcherDM" timestamp="1586868118018">
+      <screen x="0" y="0" width="1440" height="900" />
+    </state>
+    <state width="500" height="445" key="SwitcherDM/0.0.1440.900@0.0.1440.900" timestamp="1586868118018" />
+    <state x="503" y="374" key="com.intellij.openapi.vcs.update.UpdateOrStatusOptionsDialogupdate-v2" timestamp="1586868225156">
+      <screen x="0" y="0" width="1440" height="900" />
+    </state>
+    <state x="503" y="374" key="com.intellij.openapi.vcs.update.UpdateOrStatusOptionsDialogupdate-v2/0.0.1440.900@0.0.1440.900" timestamp="1586868225156" />
+    <state x="267" y="194" key="com.intellij.xdebugger.impl.breakpoints.ui.BreakpointsDialogFactory$2" timestamp="1586867970157">
+      <screen x="0" y="0" width="1440" height="900" />
+    </state>
+    <state x="267" y="194" key="com.intellij.xdebugger.impl.breakpoints.ui.BreakpointsDialogFactory$2/0.0.1440.900@0.0.1440.900" timestamp="1586867970157" />
+    <state x="200" y="91" width="909" height="740" key="find.popup" timestamp="1586869185050">
+      <screen x="0" y="0" width="1440" height="900" />
+    </state>
+    <state x="200" y="91" width="909" height="740" key="find.popup/0.0.1440.900@0.0.1440.900" timestamp="1586869185050" />
+    <state x="385" y="196" width="670" height="676" key="search.everywhere.popup" timestamp="1586869174477">
+      <screen x="0" y="23" width="1440" height="797" />
+    </state>
+    <state x="385" y="196" width="670" height="676" key="search.everywhere.popup/0.0.1440.900@0.0.1440.900" timestamp="1586869125567" />
+    <state x="385" y="196" width="670" height="676" key="search.everywhere.popup/0.23.1440.797@0.23.1440.797" timestamp="1586869174477" />
     <state x="275" y="372" key="vcs.readOnlyHandler.ReadOnlyStatusDialog" timestamp="1586450811113">
       <screen x="0" y="0" width="1440" height="900" />
     </state>
