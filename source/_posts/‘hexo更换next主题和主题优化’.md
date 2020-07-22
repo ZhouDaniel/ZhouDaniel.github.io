@@ -310,4 +310,37 @@ auto_excerpt:
 ```
 把 *enable* 对应的 false 改成 true
 
+### 13 分页显示不正常问题
+1. 分页中显示了`<i class="fa fa-angle-right"></i>` 这是一个Font Awesome的字体图标，按道理来说这个图标应该可以正常显示的，现在这个图标不能显示了显示成了html源码。
+2. 解决办法:
+最简单的办法就是将<i class="fa fa-angle-right"></i>这个不能正常显示的字体图标改成一般的字符，我这里就是改成正常的一般左右键字符“>”，“<”。在 themes\hexo-theme-next\layout_partials 下找到hexo-theme-next的翻页组件，就是pagination.swig
+将
+```js
+{% if page.prev or page.next %}
+  <nav class="pagination">
+    {{
+      paginator({
+        prev_text: '<i class="fa fa-angle-left"></i>',
+        next_text: '<i class="fa fa-angle-right"></i>',
+        mid_size: 1
+      })
+    }}
+  </nav>
+{% endif %}
+```
+改成
+```js
+{% if page.prev or page.next %}
+  <nav class="pagination">
+    {{
+      paginator({
+        prev_text: '<',
+        next_text: '>',
+        mid_size: 1
+      })
+    }}
+  </nav>
+{% endif %}
+```
+
 
