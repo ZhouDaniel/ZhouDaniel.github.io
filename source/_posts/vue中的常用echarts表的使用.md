@@ -1,5 +1,5 @@
 ---
-title: vue中的常用echarts表的使用
+title: 常用echarts表的使用(vue项目中)
 date: 2020-07-21 14:07:31
 tags: vue echarts
 categories:
@@ -315,6 +315,429 @@ var option = {
 };
 echartDemo.setOption(option);
 ```
-
-
-
+## 四 双向柱状图
+```html
+<div id="main1" style="width: 600px;height:400px;"></div>      <!-- html -->
+```
+```js
+            var echarts = require("echarts");
+            var echartDemo = echarts.init(document.getElementById("main1"));
+            const colorArray = [
+                {
+                    top: "#FF6060", //hong
+                    bottom: "#FF71C5"
+                },
+                {
+                    top: "#FF6060", //hong
+                    bottom: "#FF71C5"
+                },
+                {
+                    top: "#FF6060", //hong
+                    bottom: "#FF71C5"
+                },
+                {
+                    top: "#FFB172", //huang
+                    bottom: "#FFE9A8"
+                },
+                {
+                    top: "#FFB172", //huang
+                    bottom: "#FFE9A8"
+                },
+                {
+                    top: "#FFB172", //huang
+                    bottom: "#FFE9A8"
+                },
+                {
+                    top: "#7760FF", //lan
+                    bottom: "#71B2FF"
+                },
+                {
+                    top: "#7760FF", //lan
+                    bottom: "#71B2FF"
+                },
+                {
+                    top: "#7760FF", //lan
+                    bottom: "#71B2FF"
+                },
+                {
+                    top: "#7760FF", //lan
+                    bottom: "#71B2FF"
+                }
+            ];
+            var option = {
+                // baseOption: {
+                    background: "#fff",
+                    legend: {
+                        top: "5%",
+                        left: "center",
+                        textStyle: {
+                            color: "#383B4F",
+                            fontSize: "12px"
+                        },
+                        data: ["金额", "票数"]
+                    },
+                    tooltip: {
+                        show: true,
+                        trigger: "item",
+                        axisPointer: {
+                            type: "shadow"
+                        },
+                        formatter: "{b}<br/>{a}: {c}"
+                    },
+                    //网格grid区域
+                    grid: [
+                        {
+                            show: false,
+                            left: "10%",
+                            top: "15%",
+                            bottom: "5%",
+                            // containLabel: true,
+                            width: "34%",
+                        },
+                        {
+                            show: false,
+                            left: "51.7%",
+                            top: "15%",
+                            bottom: "5%",
+                            width: "10%",
+                            tooltip: {
+                                show: false
+                            },
+                        },
+                        {
+                            show: false,
+                            right: "10%",
+                            top: "15%",
+                            bottom: "5%",
+                            // containLabel: true,
+                            width: "34%",
+                        }
+                    ],
+                    //x轴线配置
+                    xAxis: [
+                        {
+                            gridIndex: 0,
+                            type: "value",
+                            position: "top",
+                            inverse: true, 
+                            axisLine: {
+                                show: false
+                            },
+                            axisTick: {
+                                show: false
+                            },
+                            axisLabel: {
+                                show: true,
+                                textStyle: {
+                                    color: "#fff",
+                                    fontSize: 1
+                                },
+                                position: "left",
+                                left: 0
+                            },
+                            splitLine: {
+                                show: false
+                            }
+                        },
+                        {
+                            gridIndex: 1,
+                            show: false
+                        },
+                        {
+                            //右侧区域
+                            gridIndex: 2,
+                            type: "value",
+                            position: "top",
+                            inverse: false,
+                            axisLine: {
+                                show: false
+                            },
+                            axisTick: {
+                                show: false
+                            },
+                            axisLabel: {
+                                show: true,
+                                textStyle: {
+                                    color: "#fff",
+                                    fontSize: 12
+                                }
+                            },
+                            splitLine: {
+                                show: false
+                            }
+                        }
+                    ],
+                    //y轴线配置
+                    yAxis: [
+                        {
+                            //左侧区域
+                            gridIndex: 0,
+                            type: "category",
+                            inverse: true,
+                            axisLine: {
+                                show: false
+                            },
+                            axisTick: {
+                                show: false,
+                            },
+                            axisLabel: {
+                                show: false
+                            },
+                            // data: [0,1,2,3,4,5,6,7,8,9]
+                        },
+                        {
+                            gridIndex: 1,
+                            type: "category",
+                            axisLine: {
+                                show: false
+                            },
+                            axisTick: {
+                                show: false
+                            },
+                            axisLabel: {
+                                show: true,
+                                textStyle: {
+                                    color: "#000",
+                                    fontSize: 12
+                                }
+                            },
+                            data: [0,1,2,3,4,5,6,7,8,90]
+                        },
+                        {
+                            gridIndex: 2,
+                            type: "category",
+                            inverse: true,
+                            axisLine: {
+                                show: false
+                            },
+                            axisTick: {
+                                show: false,
+                                lineStyle: {
+                                    color: "#fff"
+                                }
+                            },
+                            axisLabel: {
+                                show: false
+                            },
+                            // data: [432,123,357,732,145,643,337,864,253,218]
+                        }
+                    ],
+                    series: [
+                        {
+                            name: "金额",
+                            type: "bar",
+                            barWidth: 6,
+                            xAxisIndex: 0,
+                            yAxisIndex: 0,
+                            label: {
+                                normal: {
+                                    show: true,
+                                    position: "left",
+                                    textStyle: {
+                                        color: "#000",
+                                        fontSize: "12px"
+                                    }
+                                }
+                            },
+                            itemStyle: {
+                                normal: {
+                                    show: true,
+                                    color: function(params) {
+                                        let num = colorArray.length;
+                                        return {
+                                            type: "linear",
+                                            colorStops: [
+                                                {
+                                                    offset: 0,
+                                                    color:
+                                                        colorArray[
+                                                            params.dataIndex %
+                                                                num
+                                                        ].bottom
+                                                },
+                                                {
+                                                    offset: 1,
+                                                    color:
+                                                        colorArray[
+                                                            params.dataIndex %
+                                                                num
+                                                        ].top
+                                                }
+                                            ]
+                                        };
+                                    },
+                                    barBorderRadius: 10,
+                                    borderWidth: 0,
+                                    borderColor: "#333"
+                                }
+                            },
+                            data: [10,30,20,40,20,50,45,65,76,87]
+                        },
+                        {
+                            name: "票数",
+                            type: "bar",
+                            barWidth: 6,
+                            xAxisIndex: 2,
+                            yAxisIndex: 2,
+                            label: {
+                                normal: {
+                                    show: true,
+                                    position: "right",
+                                    textStyle: {
+                                        color: "#000",
+                                        fontSize: 10
+                                    }
+                                }
+                            },
+                            itemStyle: {
+                                normal: {
+                                    color: function(params) {
+                                        let num = colorArray.length;
+                                        return {
+                                            type: "linear",
+                                            colorStops: [
+                                                {
+                                                    offset: 0,
+                                                    color:
+                                                        colorArray[
+                                                            params.dataIndex %
+                                                                num
+                                                        ].bottom
+                                                },
+                                                {
+                                                    offset: 1,
+                                                    color:
+                                                        colorArray[
+                                                            params.dataIndex %
+                                                                num
+                                                        ].top
+                                                },
+                                      
+                                            ]
+                                        };
+                                    },
+                                    barBorderRadius: 10,
+                                    borderWidth: 0,
+                                    borderColor: "#333"
+                                }
+                            },
+                            data: [432,123,357,732,145,643,337,864,253,218]
+                        }
+                    ]
+            };
+            window.onresize = function() {
+                echartDemo.resize();
+            };
+            echartDemo.setOption(option);
+```
+五 极坐标系柱状态
+```html
+<div id="main1" style="width: 600px;height:400px;"></div>      <!-- html -->
+```
+```js
+            var echarts = require("echarts");
+            var echartDemo = echarts.init(document.getElementById("main1"));
+            var option = {
+                title: {
+                    text: "24.67%",   // 主标题
+                    subtext: "Sub Title",   // 副标题
+                    textStyle: {       // 主标题样式
+                        color: "#383B4F",
+                        fontSize: 30
+                    },
+                    subtextStyle: {    // 副标题样式
+                        color: "#909090"
+                    },
+                    itemGap: 100, // 主副标题距离
+                    left: "center", //标题位置
+                    top: "30%"
+                },
+                angleAxis: {
+                    //极坐标系的角度轴
+                    max: 100, // 最大值
+                    clockwise: true, // 逆时针
+                    // 隐藏刻度线
+                    axisLine: {
+                        show: false
+                    },
+                    axisTick: {
+                        show: false
+                    },
+                    axisLabel: {
+                        show: false
+                    },
+                    splitLine: {
+                        show: false
+                    }
+                },
+                radiusAxis: {
+                    //极坐标系的径向轴。
+                    type: "category",
+                    // 隐藏刻度线
+                    axisLine: {
+                        show: false
+                    },
+                    axisTick: {
+                        show: false
+                    },
+                    axisLabel: {
+                        show: false
+                    },
+                    splitLine: {
+                        show: false
+                    }
+                },
+                polar: {
+                    center: ["50%", "50%"], //坐标系的中心（圆心）坐标，数组的第一项是横坐标，第二项是纵坐标
+                    radius: "160%" //极坐标系的半径。
+                },
+                series: [
+                    {
+                        type: "bar",
+                        data: [
+                            {
+                                value: "24.67",
+                                itemStyle: {
+                                        color: new echarts.graphic.LinearGradient(1,0,0,0,
+                                            [{
+                                                offset: 0,
+                                                color: "#FF1B4E"
+                                            },
+                                            {
+                                                offset: 1,
+                                                color: "#FFAD50"
+                                            }
+                                        ]
+                                    )
+                                }
+                            }
+                        ],
+                        coordinateSystem: "polar",   //该系列使用的坐标系，
+                        roundCap: true,  //是否在环形柱条两侧使用圆弧效果。(4.21版本无效)
+                        barWidth: 5,  
+                        animationEasing: 'bounceOut', // 初始动画
+                        barGap: "-100%", // 两环重叠
+                        z: 2    // 权重
+                    },
+                    {
+                        // 灰色环
+                        type: "bar",
+                        data: [
+                            {
+                                value: 100,
+                                itemStyle: {
+                                    color: "#EBF4F7"
+                                }
+                            }
+                        ],
+                        coordinateSystem: "polar",
+                        roundCap: true,   
+                        barWidth: 5,
+                        barGap: "-100%", // 两环重叠
+                        z: 1
+                    }
+                ]
+            };
+            echartDemo.setOption(option);
+```
+tips：roundCap: true,在最新的@4.8版本生效，在@4.21版本不生效

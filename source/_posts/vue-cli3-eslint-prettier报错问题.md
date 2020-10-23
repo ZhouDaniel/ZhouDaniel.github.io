@@ -24,4 +24,11 @@ categories:
                 "semi": false
             }]
     ```
+3. 设置js语句后面分号写不写都不报错
+    ```js
+     "semi": [
+                0,
+                "always"
+            ],
+    ```
 
