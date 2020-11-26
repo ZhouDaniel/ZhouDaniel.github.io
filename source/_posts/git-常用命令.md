@@ -98,5 +98,11 @@ git branch --all（或者--all这里直接-a简写）
 git remote show origin
 ```
 
+## 8
+获取指定远程分支到本地
+```js
+git clone -b 分支名 地址
+```
+
 
 

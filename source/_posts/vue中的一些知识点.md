@@ -135,3 +135,11 @@ export defalut {
  ## 十
  在一些比较旧的浏览器不能使用axios，可以使用
 window.open(URL,name)来下载，其中URL是下载表格接口，name配置是否打开新窗口
+
+## 十一
+在vue的dom中写style
+```js
+ <div class="book-wrapper" :style="{flexDirection: mode == 'col' ? 'column' : 'row'}">
+ ```
+ 注意像`flex-direction`要写成`flexDirectio`
+

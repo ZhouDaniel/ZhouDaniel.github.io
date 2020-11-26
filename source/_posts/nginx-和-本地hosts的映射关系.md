@@ -72,3 +72,7 @@ http://ase.test.com:8080/
 
 ## 三 其他
 1. 如果没有设置server_name或者nginx.conf只配置了一个server,那就默认进入第一个server
+
+## 四 遇到的问题
+
+1. 在服务器里面下载nginx，安装想启动nginx，发现启动不了，命令行也提示`The system cannot find the file specified`的错误， 很有可能因为nginx 默认端口为80，而80端口被占用，需要找到配置文件nginx.conf 修改端口，然后重新启动
