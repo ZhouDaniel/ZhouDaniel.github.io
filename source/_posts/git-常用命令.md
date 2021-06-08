@@ -86,6 +86,12 @@ git branch -D a
 2. 在本地新建分支并推送到远程
 `git checkout -b test`
 `git push origin test`   这样远程仓库中也就创建了一个test分支
+3. 本地新建了项目，想提交到远程
+1.在github上先建立仓库，仓库地址为 `git@github.com:aa/jira.git`
+2. 本地 `git add .` `git commit -m 'commitmessage'`
+3. `git remote add origin git@github.com:aa/jira.git` 关联到远程库
+4. `git push --set-upstream origin master` 分支建立关联并提交
+ps：  `git pull --rebase origin master` 、获取远程库与本地同步合并（如果远程库不为空必须做这一步，否则后面的提交会失败）
 
 #### 6 查看所有分支(包括本地与远程)
 git branch --all（或者--all这里直接-a简写） 
@@ -98,11 +104,30 @@ git branch --all（或者--all这里直接-a简写）
 git remote show origin
 ```
 
-## 8
-获取指定远程分支到本地
+## 8 获取指定远程分支到本地
 ```js
 git clone -b 分支名 地址
 ```
+
+## 9 合并分支到主分支master
+1 先切换到主分支
+```js
+git checkout master
+git merge 分支名
+```
+
+## 10 git reset
+1 本地
+--hard  这个就将所有的都还原，包括工作区和暂存区的内容
+--soft  这个是把现在的commit和你要回退的commit做比较，把差异放在暂存区中，没有commit的放在工作区中
+--mixed  这个是把现在与之前commit的差异，包括暂存区和历史提交的差异都放在工作区中
+2 远程
+ 比方说我想 返回到 a1edaeb37a5 这个commit.
+ 首先现在本地进行还原。
+`git reset --hard  a1edaeb37a5`
+# 然后强制push 到远程仓库
+`git push -f  git@xxxxx.git  master:master`
+
 
 
 

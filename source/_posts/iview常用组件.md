@@ -156,3 +156,28 @@ modalColumns: [
                     tooltip: true,
                 },
 ```
+### 5 table组件的minWidth
+```js
+private columns1: Array<object> = [
+	{
+		title: "操作",
+		slot: "action",
+		minWidth: 80,
+		align: "center"
+	},
+	{
+		title: "举报编码",
+		align: "center",
+		minWidth: 80,
+		tooltip: true,
+		key: "reportCode"
+	},
+	{
+		title: "被举报人工号",
+		align: "center",
+		minWidth: 100,
+		key: "reportedUserCode"
+	},
+]
+```
+如果table的宽度大于了盒子最大宽度，table就可以左右滚动
