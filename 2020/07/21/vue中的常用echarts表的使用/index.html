@@ -1,0 +1,810 @@
+<!DOCTYPE html>
+
+
+
+  
+
+
+<html class="theme-next gemini use-motion" lang="zh-Hans">
+<head>
+  <meta charset="UTF-8"/>
+<meta http-equiv="X-UA-Compatible" content="IE=edge" />
+<meta name="viewport" content="width=device-width, initial-scale=1, maximum-scale=1"/>
+<meta name="theme-color" content="#222">
+
+
+
+
+
+
+
+
+
+<meta http-equiv="Cache-Control" content="no-transform" />
+<meta http-equiv="Cache-Control" content="no-siteapp" />
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+  
+  
+  <link href="/lib/fancybox/source/jquery.fancybox.css?v=2.1.5" rel="stylesheet" type="text/css" />
+
+
+
+
+
+
+
+<link href="/lib/font-awesome/css/font-awesome.min.css?v=4.6.2" rel="stylesheet" type="text/css" />
+
+<link href="/css/main.css?v=5.1.4" rel="stylesheet" type="text/css" />
+
+
+  <link rel="apple-touch-icon" sizes="180x180" href="/images/favicon.ico?v=5.1.4">
+
+
+  <link rel="icon" type="image/png" sizes="32x32" href="/images/favicon.ico?v=5.1.4">
+
+
+  <link rel="icon" type="image/png" sizes="16x16" href="/images/favicon.ico?v=5.1.4">
+
+
+  <link rel="mask-icon" href="/images/favicon.ico?v=5.1.4" color="#222">
+
+
+
+
+
+  <meta name="keywords" content="vue echarts," />
+
+
+
+
+
+
+
+
+
+
+<meta name="description" content="一 安装并引入1npm install echarts --save 1. main.js 中全局引入12import echarts from &#39;echarts&#39;Vue.prototype.$echarts &#x3D; echart 在vue模板中的写法 1&lt;div id&#x3D;&quot;main&quot; style&#x3D;&quot;width: 600px;height:400px;&quot;&gt;&lt;&#x2F;div&gt;">
+<meta property="og:type" content="article">
+<meta property="og:title" content="常用echarts表的使用(vue项目中)">
+<meta property="og:url" content="http://yoursite.com/2020/07/21/vue%E4%B8%AD%E7%9A%84%E5%B8%B8%E7%94%A8echarts%E8%A1%A8%E7%9A%84%E4%BD%BF%E7%94%A8/index.html">
+<meta property="og:site_name" content="zhou的小站">
+<meta property="og:description" content="一 安装并引入1npm install echarts --save 1. main.js 中全局引入12import echarts from &#39;echarts&#39;Vue.prototype.$echarts &#x3D; echart 在vue模板中的写法 1&lt;div id&#x3D;&quot;main&quot; style&#x3D;&quot;width: 600px;height:400px;&quot;&gt;&lt;&#x2F;div&gt;">
+<meta property="article:published_time" content="2020-07-21T06:07:31.000Z">
+<meta property="article:modified_time" content="2021-06-09T14:01:01.248Z">
+<meta property="article:author" content="zhou">
+<meta property="article:tag" content="vue echarts">
+<meta name="twitter:card" content="summary">
+
+
+
+<script type="text/javascript" id="hexo.configurations">
+  var NexT = window.NexT || {};
+  var CONFIG = {
+    root: '/',
+    scheme: 'Gemini',
+    version: '5.1.4',
+    sidebar: {"position":"left","display":"post","offset":12,"b2t":false,"scrollpercent":false,"onmobile":false},
+    fancybox: true,
+    tabs: true,
+    motion: {"enable":true,"async":false,"transition":{"post_block":"fadeIn","post_header":"slideDownIn","post_body":"slideDownIn","coll_header":"slideLeftIn","sidebar":"slideUpIn"}},
+    duoshuo: {
+      userId: '0',
+      author: '博主'
+    },
+    algolia: {
+      applicationID: '',
+      apiKey: '',
+      indexName: '',
+      hits: {"per_page":10},
+      labels: {"input_placeholder":"Search for Posts","hits_empty":"We didn't find any results for the search: ${query}","hits_stats":"${hits} results found in ${time} ms"}
+    }
+  };
+</script>
+
+
+
+  <link rel="canonical" href="http://yoursite.com/2020/07/21/vue中的常用echarts表的使用/"/>
+
+
+
+
+
+  <title>常用echarts表的使用(vue项目中) | zhou的小站</title>
+  
+
+
+
+
+
+
+
+
+<meta name="generator" content="Hexo 4.2.1"></head>
+
+<body itemscope itemtype="http://schema.org/WebPage" lang="zh-Hans">
+
+  
+  
+    
+  
+
+  <div class="container sidebar-position-left page-post-detail">
+    <div class="headband"></div>
+
+    <header id="header" class="header" itemscope itemtype="http://schema.org/WPHeader">
+      <div class="header-inner"><div class="site-brand-wrapper">
+  <div class="site-meta ">
+    
+
+    <div class="custom-logo-site-title">
+      <a href="/"  class="brand" rel="start">
+        <span class="logo-line-before"><i></i></span>
+        <span class="site-title">zhou的小站</span>
+        <span class="logo-line-after"><i></i></span>
+      </a>
+    </div>
+      
+        <p class="site-subtitle"></p>
+      
+  </div>
+
+  <div class="site-nav-toggle">
+    <button>
+      <span class="btn-bar"></span>
+      <span class="btn-bar"></span>
+      <span class="btn-bar"></span>
+    </button>
+  </div>
+</div>
+
+<nav class="site-nav">
+  
+
+  
+    <ul id="menu" class="menu">
+      
+        
+        <li class="menu-item menu-item-home">
+          <a href="/" rel="section">
+            
+              <i class="menu-item-icon fa fa-fw fa-home"></i> <br />
+            
+            首页
+          </a>
+        </li>
+      
+        
+        <li class="menu-item menu-item-about">
+          <a href="/about/" rel="section">
+            
+              <i class="menu-item-icon fa fa-fw fa-user"></i> <br />
+            
+            关于
+          </a>
+        </li>
+      
+        
+        <li class="menu-item menu-item-tags">
+          <a href="/tags/" rel="section">
+            
+              <i class="menu-item-icon fa fa-fw fa-tags"></i> <br />
+            
+            标签
+          </a>
+        </li>
+      
+        
+        <li class="menu-item menu-item-categories">
+          <a href="/categories/" rel="section">
+            
+              <i class="menu-item-icon fa fa-fw fa-th"></i> <br />
+            
+            分类
+          </a>
+        </li>
+      
+        
+        <li class="menu-item menu-item-archives">
+          <a href="/archives/" rel="section">
+            
+              <i class="menu-item-icon fa fa-fw fa-question-circle"></i> <br />
+            
+            归档
+          </a>
+        </li>
+      
+
+      
+    </ul>
+  
+
+  
+</nav>
+
+
+
+ </div>
+    </header>
+
+    <main id="main" class="main">
+      <div class="main-inner">
+        <div class="content-wrap">
+          <div id="content" class="content">
+            
+
+  <div id="posts" class="posts-expand">
+    
+
+  
+
+  
+  
+  
+
+  <article class="post post-type-normal" itemscope itemtype="http://schema.org/Article">
+  
+  
+  
+  <div class="post-block">
+    <link itemprop="mainEntityOfPage" href="http://yoursite.com/2020/07/21/vue%E4%B8%AD%E7%9A%84%E5%B8%B8%E7%94%A8echarts%E8%A1%A8%E7%9A%84%E4%BD%BF%E7%94%A8/">
+
+    <span hidden itemprop="author" itemscope itemtype="http://schema.org/Person">
+      <meta itemprop="name" content="zhou">
+      <meta itemprop="description" content="">
+      <meta itemprop="image" content="/uploads/images/avatar.jpg">
+    </span>
+
+    <span hidden itemprop="publisher" itemscope itemtype="http://schema.org/Organization">
+      <meta itemprop="name" content="zhou的小站">
+    </span>
+
+    
+      <header class="post-header">
+
+        
+        
+          <h1 class="post-title" itemprop="name headline">常用echarts表的使用(vue项目中)</h1>
+        
+
+        <div class="post-meta">
+          <span class="post-time">
+            
+              <span class="post-meta-item-icon">
+                <i class="fa fa-calendar-o"></i>
+              </span>
+              
+                <span class="post-meta-item-text">发表于</span>
+              
+              <time title="创建于" itemprop="dateCreated datePublished" datetime="2020-07-21T14:07:31+08:00">
+                2020-07-21
+              </time>
+            
+
+            
+
+            
+          </span>
+
+          
+            <span class="post-category" >
+            
+              <span class="post-meta-divider">|</span>
+            
+              <span class="post-meta-item-icon">
+                <i class="fa fa-folder-o"></i>
+              </span>
+              
+                <span class="post-meta-item-text">分类于</span>
+              
+              
+                <span itemprop="about" itemscope itemtype="http://schema.org/Thing">
+                  <a href="/categories/echarts/" itemprop="url" rel="index">
+                    <span itemprop="name">echarts</span>
+                  </a>
+                </span>
+
+                
+                
+              
+            </span>
+          
+
+          
+            
+          
+
+          
+          
+
+          
+
+          
+            <div class="post-wordcount">
+              
+                
+                <span class="post-meta-item-icon">
+                  <i class="fa fa-file-word-o"></i>
+                </span>
+                
+                  <span class="post-meta-item-text">字数统计&#58;</span>
+                
+                <span title="字数统计">
+                  1.9k
+                </span>
+              
+
+              
+                <span class="post-meta-divider">|</span>
+              
+
+              
+                <span class="post-meta-item-icon">
+                  <i class="fa fa-clock-o"></i>
+                </span>
+                
+                  <span class="post-meta-item-text">阅读时长 &asymp;</span>
+                
+                <span title="阅读时长">
+                  10
+                </span>
+              
+            </div>
+          
+
+          
+
+        </div>
+      </header>
+    
+
+    
+    
+    
+    <div class="post-body" itemprop="articleBody">
+
+      
+      
+
+      
+        <h2 id="一-安装并引入"><a href="#一-安装并引入" class="headerlink" title="一 安装并引入"></a>一 安装并引入</h2><figure class="highlight js"><table><tr><td class="gutter"><pre><span class="line">1</span><br></pre></td><td class="code"><pre><span class="line">npm install echarts --save</span><br></pre></td></tr></table></figure>
+<h3 id="1-main-js-中全局引入"><a href="#1-main-js-中全局引入" class="headerlink" title="1. main.js 中全局引入"></a>1. main.js 中全局引入</h3><figure class="highlight js"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br></pre></td><td class="code"><pre><span class="line"><span class="keyword">import</span> echarts <span class="keyword">from</span> <span class="string">'echarts'</span></span><br><span class="line">Vue.prototype.$echarts = echart</span><br></pre></td></tr></table></figure>
+<p>在vue模板中的写法</p>
+<figure class="highlight html"><table><tr><td class="gutter"><pre><span class="line">1</span><br></pre></td><td class="code"><pre><span class="line"><span class="tag">&lt;<span class="name">div</span> <span class="attr">id</span>=<span class="string">"main"</span> <span class="attr">style</span>=<span class="string">"width: 600px;height:400px;"</span>&gt;</span><span class="tag">&lt;/<span class="name">div</span>&gt;</span>      <span class="comment">&lt;!-- html --&gt;</span></span><br></pre></td></tr></table></figure>
+<figure class="highlight js"><table><tr><td class="gutter"><pre><span class="line">1</span><br></pre></td><td class="code"><pre><span class="line"><span class="keyword">var</span> myChart = <span class="keyword">this</span>.$echarts.init(<span class="built_in">document</span>.getElementById(<span class="string">'main'</span>));  <span class="comment">//js</span></span><br></pre></td></tr></table></figure>
+<h3 id="2-直接在vue文件中使用"><a href="#2-直接在vue文件中使用" class="headerlink" title="2. 直接在vue文件中使用"></a>2. 直接在vue文件中使用</h3><figure class="highlight js"><table><tr><td class="gutter"><pre><span class="line">1</span><br></pre></td><td class="code"><pre><span class="line"><span class="keyword">var</span> echarts = <span class="built_in">require</span>(<span class="string">"echarts"</span>);</span><br></pre></td></tr></table></figure>
+<h2 id="二-柱状图"><a href="#二-柱状图" class="headerlink" title="二 柱状图"></a>二 柱状图</h2><figure class="highlight html"><table><tr><td class="gutter"><pre><span class="line">1</span><br></pre></td><td class="code"><pre><span class="line"><span class="tag">&lt;<span class="name">div</span> <span class="attr">id</span>=<span class="string">"main1"</span> <span class="attr">style</span>=<span class="string">"width: 600px;height:400px;"</span>&gt;</span><span class="tag">&lt;/<span class="name">div</span>&gt;</span>      <span class="comment">&lt;!-- html --&gt;</span></span><br></pre></td></tr></table></figure>
+<figure class="highlight js"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br><span class="line">8</span><br><span class="line">9</span><br><span class="line">10</span><br><span class="line">11</span><br><span class="line">12</span><br><span class="line">13</span><br><span class="line">14</span><br><span class="line">15</span><br><span class="line">16</span><br><span class="line">17</span><br><span class="line">18</span><br><span class="line">19</span><br><span class="line">20</span><br><span class="line">21</span><br><span class="line">22</span><br><span class="line">23</span><br><span class="line">24</span><br><span class="line">25</span><br><span class="line">26</span><br><span class="line">27</span><br><span class="line">28</span><br><span class="line">29</span><br><span class="line">30</span><br><span class="line">31</span><br><span class="line">32</span><br><span class="line">33</span><br><span class="line">34</span><br><span class="line">35</span><br><span class="line">36</span><br><span class="line">37</span><br><span class="line">38</span><br><span class="line">39</span><br><span class="line">40</span><br><span class="line">41</span><br><span class="line">42</span><br><span class="line">43</span><br><span class="line">44</span><br><span class="line">45</span><br><span class="line">46</span><br><span class="line">47</span><br><span class="line">48</span><br><span class="line">49</span><br><span class="line">50</span><br><span class="line">51</span><br><span class="line">52</span><br><span class="line">53</span><br><span class="line">54</span><br><span class="line">55</span><br><span class="line">56</span><br><span class="line">57</span><br><span class="line">58</span><br><span class="line">59</span><br><span class="line">60</span><br><span class="line">61</span><br><span class="line">62</span><br><span class="line">63</span><br><span class="line">64</span><br><span class="line">65</span><br><span class="line">66</span><br><span class="line">67</span><br><span class="line">68</span><br><span class="line">69</span><br><span class="line">70</span><br><span class="line">71</span><br><span class="line">72</span><br><span class="line">73</span><br><span class="line">74</span><br><span class="line">75</span><br><span class="line">76</span><br><span class="line">77</span><br><span class="line">78</span><br><span class="line">79</span><br><span class="line">80</span><br><span class="line">81</span><br><span class="line">82</span><br><span class="line">83</span><br><span class="line">84</span><br></pre></td><td class="code"><pre><span class="line"><span class="keyword">var</span> echarts = <span class="built_in">require</span>(<span class="string">"echarts"</span>);</span><br><span class="line"><span class="keyword">var</span> echartDemo = echarts.init(<span class="built_in">document</span>.getElementById(<span class="string">"main1"</span>));</span><br><span class="line"><span class="keyword">const</span> colorArray = [</span><br><span class="line">        &#123;</span><br><span class="line">            top: <span class="string">"#FC5996"</span>, <span class="comment">//hong</span></span><br><span class="line">            bottom: <span class="string">"#E9484E"</span>,</span><br><span class="line">        &#125;,</span><br><span class="line">        &#123;</span><br><span class="line">            top: <span class="string">"#FC5996"</span>, <span class="comment">//hong</span></span><br><span class="line">            bottom: <span class="string">"#E9484E"</span>,</span><br><span class="line">        &#125;,</span><br><span class="line">        &#123;</span><br><span class="line">            top: <span class="string">"#FC5996"</span>, <span class="comment">//hong</span></span><br><span class="line">            bottom: <span class="string">"#E9484E"</span>,</span><br><span class="line">        &#125;,</span><br><span class="line">        &#123;</span><br><span class="line">            top: <span class="string">"#FDD754"</span>, <span class="comment">//huang</span></span><br><span class="line">            bottom: <span class="string">"#FBAE2A"</span>,</span><br><span class="line">        &#125;,</span><br><span class="line">        &#123;</span><br><span class="line">            top: <span class="string">"#FDD754"</span>, <span class="comment">//huang</span></span><br><span class="line">            bottom: <span class="string">"#FBAE2A"</span>,</span><br><span class="line">        &#125;,</span><br><span class="line">        &#123;</span><br><span class="line">            top: <span class="string">"#96A5F5"</span>, <span class="comment">//lan</span></span><br><span class="line">            bottom: <span class="string">"#5D6CE8"</span>,</span><br><span class="line">        &#125;,</span><br><span class="line">        &#123;</span><br><span class="line">            top: <span class="string">"#96A5F5"</span>, <span class="comment">//lan</span></span><br><span class="line">            bottom: <span class="string">"#5D6CE8"</span>,</span><br><span class="line">        &#125;,</span><br><span class="line">    ];</span><br><span class="line"><span class="keyword">var</span> option = &#123;</span><br><span class="line">    xAxis: [</span><br><span class="line">        &#123;</span><br><span class="line">            type: <span class="string">"category"</span>,</span><br><span class="line">            data: [<span class="string">"Mon"</span>, <span class="string">"Tue"</span>, <span class="string">"Wed"</span>, <span class="string">"Thu"</span>, <span class="string">"Fri"</span>, <span class="string">"Sat"</span>, <span class="string">"Sun"</span>], </span><br><span class="line">            axisLine: &#123; <span class="comment">// x线</span></span><br><span class="line">                show: <span class="literal">false</span></span><br><span class="line">            &#125;,</span><br><span class="line">            axisTick: &#123; <span class="comment">//线标</span></span><br><span class="line">                show: <span class="literal">false</span></span><br><span class="line">            &#125;</span><br><span class="line">        &#125;</span><br><span class="line">    ],</span><br><span class="line">    yAxis: &#123;</span><br><span class="line">        type: <span class="string">"value"</span>,</span><br><span class="line">        axisLine: &#123;</span><br><span class="line">            show: <span class="literal">false</span></span><br><span class="line">        &#125;,</span><br><span class="line">        axisTick: &#123;</span><br><span class="line">            show: <span class="literal">false</span></span><br><span class="line">        &#125;,</span><br><span class="line">        &#123; </span><br><span class="line">            show: <span class="literal">false</span></span><br><span class="line">        &#125;</span><br><span class="line">    &#125;,</span><br><span class="line">    series: [</span><br><span class="line">        &#123;</span><br><span class="line">            data: [<span class="number">120</span>, <span class="number">200</span>, <span class="number">150</span>, <span class="number">80</span>, <span class="number">70</span>, <span class="number">110</span>, <span class="number">130</span>],</span><br><span class="line">            type: <span class="string">"bar"</span>,</span><br><span class="line">            itemStyle: &#123;</span><br><span class="line">                barBorderRadius: [<span class="number">12</span>, <span class="number">12</span>, <span class="number">12</span>, <span class="number">12</span>], <span class="comment">// 柱状图弧度</span></span><br><span class="line">                color: <span class="function"><span class="keyword">function</span>(<span class="params">params</span>) </span>&#123;</span><br><span class="line">                    <span class="keyword">let</span> num = colorArray.length;</span><br><span class="line">                    <span class="keyword">return</span> <span class="keyword">new</span> echarts.graphic.LinearGradient(<span class="number">0</span>,<span class="number">0</span>,<span class="number">0</span>,<span class="number">1</span>, <span class="comment">//控制颜色渐变的方向</span></span><br><span class="line">                        [</span><br><span class="line">                            &#123;</span><br><span class="line">                                offset: <span class="number">0</span>,</span><br><span class="line">                                color:colorArray[params.dataIndex % num].top</span><br><span class="line">                            &#125;,</span><br><span class="line">                            &#123;</span><br><span class="line">                                offset: <span class="number">1</span>,</span><br><span class="line">                                color:colorArray[params.dataIndex % num].bottom</span><br><span class="line">                            &#125;</span><br><span class="line">                        ]</span><br><span class="line">                    );</span><br><span class="line">                &#125;</span><br><span class="line">            &#125;,</span><br><span class="line">            barWidth: <span class="string">"12px"</span>  <span class="comment">//柱子的宽度</span></span><br><span class="line">        &#125;</span><br><span class="line">    ]</span><br><span class="line">&#125;;</span><br><span class="line">echartDemo.setOption(option);</span><br></pre></td></tr></table></figure>
+
+<h2 id="三-折线图"><a href="#三-折线图" class="headerlink" title="三 折线图"></a>三 折线图</h2><figure class="highlight html"><table><tr><td class="gutter"><pre><span class="line">1</span><br></pre></td><td class="code"><pre><span class="line"><span class="tag">&lt;<span class="name">div</span> <span class="attr">id</span>=<span class="string">"main1"</span> <span class="attr">style</span>=<span class="string">"width: 600px;height:400px;"</span>&gt;</span><span class="tag">&lt;/<span class="name">div</span>&gt;</span>      <span class="comment">&lt;!-- html --&gt;</span></span><br></pre></td></tr></table></figure>
+<figure class="highlight js"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br><span class="line">8</span><br><span class="line">9</span><br><span class="line">10</span><br><span class="line">11</span><br><span class="line">12</span><br><span class="line">13</span><br><span class="line">14</span><br><span class="line">15</span><br><span class="line">16</span><br><span class="line">17</span><br><span class="line">18</span><br><span class="line">19</span><br><span class="line">20</span><br><span class="line">21</span><br><span class="line">22</span><br><span class="line">23</span><br><span class="line">24</span><br><span class="line">25</span><br><span class="line">26</span><br><span class="line">27</span><br><span class="line">28</span><br><span class="line">29</span><br><span class="line">30</span><br><span class="line">31</span><br><span class="line">32</span><br><span class="line">33</span><br><span class="line">34</span><br><span class="line">35</span><br><span class="line">36</span><br><span class="line">37</span><br><span class="line">38</span><br><span class="line">39</span><br><span class="line">40</span><br><span class="line">41</span><br><span class="line">42</span><br><span class="line">43</span><br><span class="line">44</span><br><span class="line">45</span><br><span class="line">46</span><br><span class="line">47</span><br><span class="line">48</span><br><span class="line">49</span><br><span class="line">50</span><br><span class="line">51</span><br><span class="line">52</span><br><span class="line">53</span><br><span class="line">54</span><br><span class="line">55</span><br><span class="line">56</span><br><span class="line">57</span><br><span class="line">58</span><br><span class="line">59</span><br><span class="line">60</span><br><span class="line">61</span><br><span class="line">62</span><br><span class="line">63</span><br><span class="line">64</span><br><span class="line">65</span><br><span class="line">66</span><br><span class="line">67</span><br><span class="line">68</span><br><span class="line">69</span><br><span class="line">70</span><br><span class="line">71</span><br><span class="line">72</span><br><span class="line">73</span><br><span class="line">74</span><br><span class="line">75</span><br><span class="line">76</span><br><span class="line">77</span><br><span class="line">78</span><br><span class="line">79</span><br><span class="line">80</span><br><span class="line">81</span><br><span class="line">82</span><br><span class="line">83</span><br><span class="line">84</span><br><span class="line">85</span><br><span class="line">86</span><br><span class="line">87</span><br><span class="line">88</span><br><span class="line">89</span><br><span class="line">90</span><br><span class="line">91</span><br><span class="line">92</span><br><span class="line">93</span><br><span class="line">94</span><br><span class="line">95</span><br><span class="line">96</span><br><span class="line">97</span><br><span class="line">98</span><br><span class="line">99</span><br><span class="line">100</span><br><span class="line">101</span><br><span class="line">102</span><br><span class="line">103</span><br><span class="line">104</span><br><span class="line">105</span><br><span class="line">106</span><br><span class="line">107</span><br><span class="line">108</span><br><span class="line">109</span><br><span class="line">110</span><br><span class="line">111</span><br><span class="line">112</span><br><span class="line">113</span><br><span class="line">114</span><br><span class="line">115</span><br><span class="line">116</span><br><span class="line">117</span><br><span class="line">118</span><br><span class="line">119</span><br><span class="line">120</span><br><span class="line">121</span><br><span class="line">122</span><br><span class="line">123</span><br><span class="line">124</span><br><span class="line">125</span><br><span class="line">126</span><br><span class="line">127</span><br><span class="line">128</span><br><span class="line">129</span><br><span class="line">130</span><br><span class="line">131</span><br><span class="line">132</span><br><span class="line">133</span><br><span class="line">134</span><br><span class="line">135</span><br><span class="line">136</span><br><span class="line">137</span><br><span class="line">138</span><br><span class="line">139</span><br><span class="line">140</span><br><span class="line">141</span><br><span class="line">142</span><br><span class="line">143</span><br><span class="line">144</span><br><span class="line">145</span><br><span class="line">146</span><br><span class="line">147</span><br><span class="line">148</span><br><span class="line">149</span><br><span class="line">150</span><br><span class="line">151</span><br><span class="line">152</span><br><span class="line">153</span><br><span class="line">154</span><br><span class="line">155</span><br><span class="line">156</span><br><span class="line">157</span><br><span class="line">158</span><br><span class="line">159</span><br><span class="line">160</span><br><span class="line">161</span><br><span class="line">162</span><br><span class="line">163</span><br><span class="line">164</span><br><span class="line">165</span><br><span class="line">166</span><br><span class="line">167</span><br><span class="line">168</span><br><span class="line">169</span><br><span class="line">170</span><br><span class="line">171</span><br><span class="line">172</span><br><span class="line">173</span><br><span class="line">174</span><br><span class="line">175</span><br><span class="line">176</span><br><span class="line">177</span><br><span class="line">178</span><br><span class="line">179</span><br><span class="line">180</span><br><span class="line">181</span><br><span class="line">182</span><br><span class="line">183</span><br><span class="line">184</span><br><span class="line">185</span><br><span class="line">186</span><br><span class="line">187</span><br><span class="line">188</span><br><span class="line">189</span><br><span class="line">190</span><br><span class="line">191</span><br><span class="line">192</span><br><span class="line">193</span><br></pre></td><td class="code"><pre><span class="line"><span class="keyword">var</span> echarts = <span class="built_in">require</span>(<span class="string">"echarts"</span>);</span><br><span class="line"><span class="keyword">var</span> echartDemo = echarts.init(<span class="built_in">document</span>.getElementById(<span class="string">"main1"</span>));</span><br><span class="line"><span class="keyword">var</span> option = &#123;</span><br><span class="line">    backgroundColor: <span class="string">"#fff"</span>,</span><br><span class="line">    color: [<span class="string">"#266FFB"</span>, <span class="string">"#FFD42A"</span>],</span><br><span class="line">    legend: &#123;  </span><br><span class="line">        data: [<span class="string">"异常金额"</span>, <span class="string">"异常票数"</span>],</span><br><span class="line">        right: <span class="string">"5%"</span>,</span><br><span class="line">        top: <span class="string">"1%"</span>,</span><br><span class="line">    &#125;,</span><br><span class="line">    xAxis: [</span><br><span class="line">        &#123;</span><br><span class="line">            type: <span class="string">"category"</span>,</span><br><span class="line">            data: [<span class="number">6.1</span>,<span class="number">6.2</span>,<span class="number">6.3</span>,<span class="number">6.4</span>,<span class="number">6.5</span>,<span class="number">6.6</span>,<span class="number">6.7</span>,<span class="number">6.8</span>,<span class="number">6.9</span>,<span class="number">6.10</span>,],</span><br><span class="line">            axisLine: &#123;</span><br><span class="line">                lineStyle: &#123;</span><br><span class="line">                    color: <span class="string">"#999"</span>, <span class="comment">//x轴颜色</span></span><br><span class="line">                &#125;,</span><br><span class="line">            &#125;,</span><br><span class="line">            axisTick: &#123;</span><br><span class="line">                alignWithLabel: <span class="literal">true</span>,</span><br><span class="line">                show: <span class="literal">true</span>,</span><br><span class="line">            &#125;,</span><br><span class="line">        &#125;,</span><br><span class="line">    ],</span><br><span class="line">    yAxis: [</span><br><span class="line">        &#123;</span><br><span class="line">            type: <span class="string">"value"</span>,</span><br><span class="line">            splitNumber: <span class="number">5</span>,</span><br><span class="line">            axisLabel: &#123;   </span><br><span class="line">                show: <span class="literal">true</span>,</span><br><span class="line">            &#125;,</span><br><span class="line">            axisTick: &#123;   </span><br><span class="line">                show: <span class="literal">true</span>,</span><br><span class="line">            &#125;,</span><br><span class="line">            axisLine: &#123;  </span><br><span class="line">                show: <span class="literal">true</span>,</span><br><span class="line">            &#125;,</span><br><span class="line">            splitLine: &#123; </span><br><span class="line">                show: <span class="literal">true</span>,</span><br><span class="line">                lineStyle: &#123;</span><br><span class="line">                    color: <span class="string">"#ececec"</span>,</span><br><span class="line">                &#125;,</span><br><span class="line">            &#125;,</span><br><span class="line">            min: <span class="number">0</span>, </span><br><span class="line">        &#125;,</span><br><span class="line">        &#123;</span><br><span class="line">            type: <span class="string">"value"</span>,</span><br><span class="line">            splitNumber: <span class="number">5</span>,</span><br><span class="line">            name: <span class="string">'1212'</span>,    </span><br><span class="line">            nameTextStyle: &#123;   <span class="comment">// 文字样式</span></span><br><span class="line">                color: <span class="string">"pink"</span>,</span><br><span class="line">                align: <span class="string">"center"</span>,</span><br><span class="line">                textVerticalAlign: <span class="string">"middle"</span>,</span><br><span class="line">            &#125;,</span><br><span class="line">            axisLabel: &#123;  <span class="comment">//坐标轴刻度标签的相关设置。</span></span><br><span class="line">                show: <span class="literal">true</span>,</span><br><span class="line">            &#125;,</span><br><span class="line">            axisTick: &#123;    <span class="comment">//坐标轴刻度相关设置</span></span><br><span class="line">                show: <span class="literal">true</span>,</span><br><span class="line">            &#125;,</span><br><span class="line">            axisLine: &#123;</span><br><span class="line">                show: <span class="literal">true</span>,  <span class="comment">//坐标轴轴线相关设置。</span></span><br><span class="line">            &#125;,</span><br><span class="line">            splitLine: &#123;    <span class="comment">//坐标轴在 grid 区域中的分隔线</span></span><br><span class="line">                show: <span class="literal">true</span>,</span><br><span class="line">                lineStyle: &#123;</span><br><span class="line">                    color: <span class="string">"#eee"</span>,</span><br><span class="line">                &#125;,</span><br><span class="line">            &#125;,</span><br><span class="line">            min: <span class="number">0</span>,   <span class="comment">// y轴最小值</span></span><br><span class="line">        &#125;,</span><br><span class="line"></span><br><span class="line">    ],</span><br><span class="line">    grid: &#123;</span><br><span class="line">        top: <span class="string">"15%"</span>,</span><br><span class="line">        left: <span class="string">"10%"</span>,</span><br><span class="line">        right: <span class="string">"10%"</span>,</span><br><span class="line">        bottom: <span class="string">"10%"</span>, <span class="comment">// 表的底座位置大小</span></span><br><span class="line">    &#125;,</span><br><span class="line">    tooltip: &#123;</span><br><span class="line">        trigger: <span class="string">"axis"</span>, <span class="comment">// 触发机制</span></span><br><span class="line">        backgroundColor: <span class="string">"#fff"</span>, <span class="comment">// tooltip的背景颜色</span></span><br><span class="line">        axisPointer: &#123;</span><br><span class="line">            type: <span class="string">"line"</span>,  <span class="comment">// 指标样式</span></span><br><span class="line">        &#125;,</span><br><span class="line">        textStyle: &#123;</span><br><span class="line">            color: <span class="string">"#383B4F"</span>,</span><br><span class="line">        &#125;,</span><br><span class="line">        extraCssText: <span class="string">"box-shadow: 0 0 9px 0 rgba(225,227,239,0.66);"</span>,</span><br><span class="line">        formatter: <span class="function"><span class="keyword">function</span>(<span class="params">params</span>) </span>&#123;  <span class="comment">// 自定义 tooltip</span></span><br><span class="line">            <span class="keyword">var</span> html = <span class="string">""</span>;</span><br><span class="line">            <span class="keyword">var</span> seriesName = [<span class="string">"异常票数"</span>, <span class="string">"异常金额"</span>];</span><br><span class="line">            <span class="keyword">var</span> color = [<span class="string">"#166bf6"</span>, <span class="string">"#ffe100"</span>];</span><br><span class="line">            html +=</span><br><span class="line">                <span class="string">'&lt;div style="display:inline-block;width:150px;position: relative;margin-left:10px;background:#fff"&gt;'</span>;</span><br><span class="line">            html +=</span><br><span class="line">                <span class="string">'&lt;div class="tooltipCont" style="display:block;width:150px;position: relative;"&gt;'</span>;</span><br><span class="line">            html +=</span><br><span class="line">                <span class="string">'&lt;i style="display:inline-block;width: 8px;height: 8px;margin-right: 6px;border: none;border-radius: 100%;background:red;"&gt;&lt;/i&gt;&lt;span class=""&gt;'</span> +</span><br><span class="line">                params[<span class="number">0</span>].name +</span><br><span class="line">                <span class="string">"&lt;/span&gt;&lt;br/&gt;"</span>;</span><br><span class="line">            params.forEach(<span class="function"><span class="keyword">function</span>(<span class="params">item, index</span>) </span>&#123;</span><br><span class="line">                html +=</span><br><span class="line">                    <span class="string">'&lt;i style="display:inline-block;width: 8px;height: 8px;margin-right: 6px;border: none;border-radius: 50%;background:'</span> +</span><br><span class="line">                    color[index] +</span><br><span class="line">                    <span class="string">'"&gt;&lt;/i&gt;'</span> +</span><br><span class="line">                    <span class="string">'&lt;span style="display:inline-block;font-size:12px;color:#8F9095;margin-left:0px;width:40px;"&gt;'</span> +</span><br><span class="line">                    seriesName[index] +</span><br><span class="line">                    <span class="string">"&lt;/span&gt;"</span> +</span><br><span class="line">                    <span class="string">'&lt;span style="display:inline-block;font-size:14px;color:#37375A;margin-left:15px;"&gt;'</span> +</span><br><span class="line">                    params[index].value +</span><br><span class="line">                    <span class="string">"&lt;/span&gt;&lt;br/&gt;"</span>;</span><br><span class="line">            &#125;);</span><br><span class="line">            html += <span class="string">"&lt;/div&gt;"</span>;</span><br><span class="line">            <span class="keyword">return</span> html;</span><br><span class="line">        &#125;,</span><br><span class="line">    &#125;,</span><br><span class="line">    series: [</span><br><span class="line">        &#123;</span><br><span class="line">            type: <span class="string">"line"</span>,</span><br><span class="line">            showSymbol: <span class="literal">true</span>,</span><br><span class="line">            symbol: <span class="string">"circle"</span>, </span><br><span class="line">            symbolSize: <span class="number">6</span>,    <span class="comment">// 折线标设置</span></span><br><span class="line">            name: <span class="string">"异常金额"</span>, <span class="comment">// 注意这边的legend中的文字对应</span></span><br><span class="line">            smooth: <span class="literal">true</span>,</span><br><span class="line">            areaStyle: &#123;   <span class="comment">// 区域颜色渐变</span></span><br><span class="line">                normal: &#123;</span><br><span class="line">                    color: <span class="keyword">new</span> echarts.graphic.LinearGradient(</span><br><span class="line">                        <span class="number">0</span>,</span><br><span class="line">                        <span class="number">0</span>,</span><br><span class="line">                        <span class="number">0</span>,</span><br><span class="line">                        <span class="number">1</span>,</span><br><span class="line">                        [</span><br><span class="line">                            &#123;</span><br><span class="line">                                offset: <span class="number">0</span>,</span><br><span class="line">                                color: <span class="string">"rgba(69,144,246,.5)"</span>,</span><br><span class="line">                            &#125;,</span><br><span class="line">                            &#123;</span><br><span class="line">                                offset: <span class="number">1</span>,</span><br><span class="line">                                color: <span class="string">"#fff"</span>,</span><br><span class="line">                            &#125;,</span><br><span class="line">                        ]</span><br><span class="line">                    ),</span><br><span class="line">                &#125;,</span><br><span class="line">            &#125;,</span><br><span class="line">            lineStyle: &#123;   <span class="comment">// 折线样式设置</span></span><br><span class="line">                normal: &#123;</span><br><span class="line">                    color: <span class="string">"#266FFB"</span>, </span><br><span class="line">                    width: <span class="string">"2"</span>,</span><br><span class="line">                &#125;,</span><br><span class="line">            &#125;,</span><br><span class="line">            data: [<span class="number">300</span>,<span class="number">210</span>,<span class="number">200</span>,<span class="number">135</span>,<span class="number">564</span>,<span class="number">456</span>,<span class="number">643</span>,<span class="number">367</span>,<span class="number">345</span>,<span class="number">123</span>],</span><br><span class="line">        &#125;,</span><br><span class="line">        &#123;</span><br><span class="line">            type: <span class="string">"line"</span>,</span><br><span class="line">            name: <span class="string">"异常票数"</span>,</span><br><span class="line">            showSymbol: <span class="literal">true</span>,</span><br><span class="line">            symbol: <span class="string">"circle"</span>,</span><br><span class="line">            smooth: <span class="literal">true</span>,</span><br><span class="line">            symbolSize: <span class="number">6</span>,</span><br><span class="line">            areaStyle: &#123;</span><br><span class="line">                normal: &#123;</span><br><span class="line">                    color: <span class="keyword">new</span> echarts.graphic.LinearGradient(</span><br><span class="line">                        <span class="number">0</span>,</span><br><span class="line">                        <span class="number">0</span>,</span><br><span class="line">                        <span class="number">0</span>,</span><br><span class="line">                        <span class="number">1</span>,</span><br><span class="line">                        [</span><br><span class="line">                            &#123;</span><br><span class="line">                                offset: <span class="number">0</span>,</span><br><span class="line">                                color: <span class="string">"rgba(255,202,66,.5)"</span>,</span><br><span class="line">                            &#125;,</span><br><span class="line">                            &#123;</span><br><span class="line">                                offset: <span class="number">1</span>,</span><br><span class="line">                                color: <span class="string">"#fff"</span>,</span><br><span class="line">                            &#125;,</span><br><span class="line">                        ]</span><br><span class="line">                    ),</span><br><span class="line">                &#125;,</span><br><span class="line">            &#125;,</span><br><span class="line">            lineStyle: &#123;</span><br><span class="line">                normal: &#123;</span><br><span class="line">                    color: <span class="string">"#FFD42A"</span>,</span><br><span class="line">                    width: <span class="string">"2"</span>,</span><br><span class="line">                &#125;,</span><br><span class="line">            &#125;,</span><br><span class="line">            yAxisIndex: <span class="number">1</span>,</span><br><span class="line">            data: [<span class="number">1234</span>,<span class="number">2234</span>,<span class="number">2345</span>,<span class="number">2222</span>,<span class="number">5332</span>,<span class="number">2356</span>,<span class="number">2235</span>,<span class="number">6443</span>,<span class="number">2347</span>,<span class="number">4432</span>],</span><br><span class="line">        &#125;,</span><br><span class="line">    ],</span><br><span class="line">&#125;;</span><br><span class="line">echartDemo.setOption(option);</span><br></pre></td></tr></table></figure>
+<h2 id="四-双向柱状图"><a href="#四-双向柱状图" class="headerlink" title="四 双向柱状图"></a>四 双向柱状图</h2><figure class="highlight html"><table><tr><td class="gutter"><pre><span class="line">1</span><br></pre></td><td class="code"><pre><span class="line"><span class="tag">&lt;<span class="name">div</span> <span class="attr">id</span>=<span class="string">"main1"</span> <span class="attr">style</span>=<span class="string">"width: 600px;height:400px;"</span>&gt;</span><span class="tag">&lt;/<span class="name">div</span>&gt;</span>      <span class="comment">&lt;!-- html --&gt;</span></span><br></pre></td></tr></table></figure>
+<figure class="highlight js"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br><span class="line">8</span><br><span class="line">9</span><br><span class="line">10</span><br><span class="line">11</span><br><span class="line">12</span><br><span class="line">13</span><br><span class="line">14</span><br><span class="line">15</span><br><span class="line">16</span><br><span class="line">17</span><br><span class="line">18</span><br><span class="line">19</span><br><span class="line">20</span><br><span class="line">21</span><br><span class="line">22</span><br><span class="line">23</span><br><span class="line">24</span><br><span class="line">25</span><br><span class="line">26</span><br><span class="line">27</span><br><span class="line">28</span><br><span class="line">29</span><br><span class="line">30</span><br><span class="line">31</span><br><span class="line">32</span><br><span class="line">33</span><br><span class="line">34</span><br><span class="line">35</span><br><span class="line">36</span><br><span class="line">37</span><br><span class="line">38</span><br><span class="line">39</span><br><span class="line">40</span><br><span class="line">41</span><br><span class="line">42</span><br><span class="line">43</span><br><span class="line">44</span><br><span class="line">45</span><br><span class="line">46</span><br><span class="line">47</span><br><span class="line">48</span><br><span class="line">49</span><br><span class="line">50</span><br><span class="line">51</span><br><span class="line">52</span><br><span class="line">53</span><br><span class="line">54</span><br><span class="line">55</span><br><span class="line">56</span><br><span class="line">57</span><br><span class="line">58</span><br><span class="line">59</span><br><span class="line">60</span><br><span class="line">61</span><br><span class="line">62</span><br><span class="line">63</span><br><span class="line">64</span><br><span class="line">65</span><br><span class="line">66</span><br><span class="line">67</span><br><span class="line">68</span><br><span class="line">69</span><br><span class="line">70</span><br><span class="line">71</span><br><span class="line">72</span><br><span class="line">73</span><br><span class="line">74</span><br><span class="line">75</span><br><span class="line">76</span><br><span class="line">77</span><br><span class="line">78</span><br><span class="line">79</span><br><span class="line">80</span><br><span class="line">81</span><br><span class="line">82</span><br><span class="line">83</span><br><span class="line">84</span><br><span class="line">85</span><br><span class="line">86</span><br><span class="line">87</span><br><span class="line">88</span><br><span class="line">89</span><br><span class="line">90</span><br><span class="line">91</span><br><span class="line">92</span><br><span class="line">93</span><br><span class="line">94</span><br><span class="line">95</span><br><span class="line">96</span><br><span class="line">97</span><br><span class="line">98</span><br><span class="line">99</span><br><span class="line">100</span><br><span class="line">101</span><br><span class="line">102</span><br><span class="line">103</span><br><span class="line">104</span><br><span class="line">105</span><br><span class="line">106</span><br><span class="line">107</span><br><span class="line">108</span><br><span class="line">109</span><br><span class="line">110</span><br><span class="line">111</span><br><span class="line">112</span><br><span class="line">113</span><br><span class="line">114</span><br><span class="line">115</span><br><span class="line">116</span><br><span class="line">117</span><br><span class="line">118</span><br><span class="line">119</span><br><span class="line">120</span><br><span class="line">121</span><br><span class="line">122</span><br><span class="line">123</span><br><span class="line">124</span><br><span class="line">125</span><br><span class="line">126</span><br><span class="line">127</span><br><span class="line">128</span><br><span class="line">129</span><br><span class="line">130</span><br><span class="line">131</span><br><span class="line">132</span><br><span class="line">133</span><br><span class="line">134</span><br><span class="line">135</span><br><span class="line">136</span><br><span class="line">137</span><br><span class="line">138</span><br><span class="line">139</span><br><span class="line">140</span><br><span class="line">141</span><br><span class="line">142</span><br><span class="line">143</span><br><span class="line">144</span><br><span class="line">145</span><br><span class="line">146</span><br><span class="line">147</span><br><span class="line">148</span><br><span class="line">149</span><br><span class="line">150</span><br><span class="line">151</span><br><span class="line">152</span><br><span class="line">153</span><br><span class="line">154</span><br><span class="line">155</span><br><span class="line">156</span><br><span class="line">157</span><br><span class="line">158</span><br><span class="line">159</span><br><span class="line">160</span><br><span class="line">161</span><br><span class="line">162</span><br><span class="line">163</span><br><span class="line">164</span><br><span class="line">165</span><br><span class="line">166</span><br><span class="line">167</span><br><span class="line">168</span><br><span class="line">169</span><br><span class="line">170</span><br><span class="line">171</span><br><span class="line">172</span><br><span class="line">173</span><br><span class="line">174</span><br><span class="line">175</span><br><span class="line">176</span><br><span class="line">177</span><br><span class="line">178</span><br><span class="line">179</span><br><span class="line">180</span><br><span class="line">181</span><br><span class="line">182</span><br><span class="line">183</span><br><span class="line">184</span><br><span class="line">185</span><br><span class="line">186</span><br><span class="line">187</span><br><span class="line">188</span><br><span class="line">189</span><br><span class="line">190</span><br><span class="line">191</span><br><span class="line">192</span><br><span class="line">193</span><br><span class="line">194</span><br><span class="line">195</span><br><span class="line">196</span><br><span class="line">197</span><br><span class="line">198</span><br><span class="line">199</span><br><span class="line">200</span><br><span class="line">201</span><br><span class="line">202</span><br><span class="line">203</span><br><span class="line">204</span><br><span class="line">205</span><br><span class="line">206</span><br><span class="line">207</span><br><span class="line">208</span><br><span class="line">209</span><br><span class="line">210</span><br><span class="line">211</span><br><span class="line">212</span><br><span class="line">213</span><br><span class="line">214</span><br><span class="line">215</span><br><span class="line">216</span><br><span class="line">217</span><br><span class="line">218</span><br><span class="line">219</span><br><span class="line">220</span><br><span class="line">221</span><br><span class="line">222</span><br><span class="line">223</span><br><span class="line">224</span><br><span class="line">225</span><br><span class="line">226</span><br><span class="line">227</span><br><span class="line">228</span><br><span class="line">229</span><br><span class="line">230</span><br><span class="line">231</span><br><span class="line">232</span><br><span class="line">233</span><br><span class="line">234</span><br><span class="line">235</span><br><span class="line">236</span><br><span class="line">237</span><br><span class="line">238</span><br><span class="line">239</span><br><span class="line">240</span><br><span class="line">241</span><br><span class="line">242</span><br><span class="line">243</span><br><span class="line">244</span><br><span class="line">245</span><br><span class="line">246</span><br><span class="line">247</span><br><span class="line">248</span><br><span class="line">249</span><br><span class="line">250</span><br><span class="line">251</span><br><span class="line">252</span><br><span class="line">253</span><br><span class="line">254</span><br><span class="line">255</span><br><span class="line">256</span><br><span class="line">257</span><br><span class="line">258</span><br><span class="line">259</span><br><span class="line">260</span><br><span class="line">261</span><br><span class="line">262</span><br><span class="line">263</span><br><span class="line">264</span><br><span class="line">265</span><br><span class="line">266</span><br><span class="line">267</span><br><span class="line">268</span><br><span class="line">269</span><br><span class="line">270</span><br><span class="line">271</span><br><span class="line">272</span><br><span class="line">273</span><br><span class="line">274</span><br><span class="line">275</span><br><span class="line">276</span><br><span class="line">277</span><br><span class="line">278</span><br><span class="line">279</span><br><span class="line">280</span><br><span class="line">281</span><br><span class="line">282</span><br><span class="line">283</span><br><span class="line">284</span><br><span class="line">285</span><br><span class="line">286</span><br><span class="line">287</span><br><span class="line">288</span><br><span class="line">289</span><br><span class="line">290</span><br><span class="line">291</span><br><span class="line">292</span><br><span class="line">293</span><br><span class="line">294</span><br><span class="line">295</span><br><span class="line">296</span><br><span class="line">297</span><br><span class="line">298</span><br><span class="line">299</span><br><span class="line">300</span><br><span class="line">301</span><br><span class="line">302</span><br><span class="line">303</span><br><span class="line">304</span><br><span class="line">305</span><br><span class="line">306</span><br><span class="line">307</span><br><span class="line">308</span><br><span class="line">309</span><br></pre></td><td class="code"><pre><span class="line"><span class="keyword">var</span> echarts = <span class="built_in">require</span>(<span class="string">"echarts"</span>);</span><br><span class="line"><span class="keyword">var</span> echartDemo = echarts.init(<span class="built_in">document</span>.getElementById(<span class="string">"main1"</span>));</span><br><span class="line"><span class="keyword">const</span> colorArray = [</span><br><span class="line">    &#123;</span><br><span class="line">        top: <span class="string">"#FF6060"</span>, <span class="comment">//hong</span></span><br><span class="line">        bottom: <span class="string">"#FF71C5"</span></span><br><span class="line">    &#125;,</span><br><span class="line">    &#123;</span><br><span class="line">        top: <span class="string">"#FF6060"</span>, <span class="comment">//hong</span></span><br><span class="line">        bottom: <span class="string">"#FF71C5"</span></span><br><span class="line">    &#125;,</span><br><span class="line">    &#123;</span><br><span class="line">        top: <span class="string">"#FF6060"</span>, <span class="comment">//hong</span></span><br><span class="line">        bottom: <span class="string">"#FF71C5"</span></span><br><span class="line">    &#125;,</span><br><span class="line">    &#123;</span><br><span class="line">        top: <span class="string">"#FFB172"</span>, <span class="comment">//huang</span></span><br><span class="line">        bottom: <span class="string">"#FFE9A8"</span></span><br><span class="line">    &#125;,</span><br><span class="line">    &#123;</span><br><span class="line">        top: <span class="string">"#FFB172"</span>, <span class="comment">//huang</span></span><br><span class="line">        bottom: <span class="string">"#FFE9A8"</span></span><br><span class="line">    &#125;,</span><br><span class="line">    &#123;</span><br><span class="line">        top: <span class="string">"#FFB172"</span>, <span class="comment">//huang</span></span><br><span class="line">        bottom: <span class="string">"#FFE9A8"</span></span><br><span class="line">    &#125;,</span><br><span class="line">    &#123;</span><br><span class="line">        top: <span class="string">"#7760FF"</span>, <span class="comment">//lan</span></span><br><span class="line">        bottom: <span class="string">"#71B2FF"</span></span><br><span class="line">    &#125;,</span><br><span class="line">    &#123;</span><br><span class="line">        top: <span class="string">"#7760FF"</span>, <span class="comment">//lan</span></span><br><span class="line">        bottom: <span class="string">"#71B2FF"</span></span><br><span class="line">    &#125;,</span><br><span class="line">    &#123;</span><br><span class="line">        top: <span class="string">"#7760FF"</span>, <span class="comment">//lan</span></span><br><span class="line">        bottom: <span class="string">"#71B2FF"</span></span><br><span class="line">    &#125;,</span><br><span class="line">    &#123;</span><br><span class="line">        top: <span class="string">"#7760FF"</span>, <span class="comment">//lan</span></span><br><span class="line">        bottom: <span class="string">"#71B2FF"</span></span><br><span class="line">    &#125;</span><br><span class="line">];</span><br><span class="line"><span class="keyword">var</span> option = &#123;</span><br><span class="line">    <span class="comment">// baseOption: &#123;</span></span><br><span class="line">        background: <span class="string">"#fff"</span>,</span><br><span class="line">        legend: &#123;</span><br><span class="line">            top: <span class="string">"5%"</span>,</span><br><span class="line">            left: <span class="string">"center"</span>,</span><br><span class="line">            textStyle: &#123;</span><br><span class="line">                color: <span class="string">"#383B4F"</span>,</span><br><span class="line">                fontSize: <span class="string">"12px"</span></span><br><span class="line">            &#125;,</span><br><span class="line">            data: [<span class="string">"金额"</span>, <span class="string">"票数"</span>]</span><br><span class="line">        &#125;,</span><br><span class="line">        tooltip: &#123;</span><br><span class="line">            show: <span class="literal">true</span>,</span><br><span class="line">            trigger: <span class="string">"item"</span>,</span><br><span class="line">            axisPointer: &#123;</span><br><span class="line">                type: <span class="string">"shadow"</span></span><br><span class="line">            &#125;,</span><br><span class="line">            formatter: <span class="string">"&#123;b&#125;&lt;br/&gt;&#123;a&#125;: &#123;c&#125;"</span></span><br><span class="line">        &#125;,</span><br><span class="line">        <span class="comment">//网格grid区域</span></span><br><span class="line">        grid: [</span><br><span class="line">            &#123;</span><br><span class="line">                show: <span class="literal">false</span>,</span><br><span class="line">                left: <span class="string">"10%"</span>,</span><br><span class="line">                top: <span class="string">"15%"</span>,</span><br><span class="line">                bottom: <span class="string">"5%"</span>,</span><br><span class="line">                <span class="comment">// containLabel: true,</span></span><br><span class="line">                width: <span class="string">"34%"</span>,</span><br><span class="line">            &#125;,</span><br><span class="line">            &#123;</span><br><span class="line">                show: <span class="literal">false</span>,</span><br><span class="line">                left: <span class="string">"51.7%"</span>,</span><br><span class="line">                top: <span class="string">"15%"</span>,</span><br><span class="line">                bottom: <span class="string">"5%"</span>,</span><br><span class="line">                width: <span class="string">"10%"</span>,</span><br><span class="line">                tooltip: &#123;</span><br><span class="line">                    show: <span class="literal">false</span></span><br><span class="line">                &#125;,</span><br><span class="line">            &#125;,</span><br><span class="line">            &#123;</span><br><span class="line">                show: <span class="literal">false</span>,</span><br><span class="line">                right: <span class="string">"10%"</span>,</span><br><span class="line">                top: <span class="string">"15%"</span>,</span><br><span class="line">                bottom: <span class="string">"5%"</span>,</span><br><span class="line">                <span class="comment">// containLabel: true,</span></span><br><span class="line">                width: <span class="string">"34%"</span>,</span><br><span class="line">            &#125;</span><br><span class="line">        ],</span><br><span class="line">        <span class="comment">//x轴线配置</span></span><br><span class="line">        xAxis: [</span><br><span class="line">            &#123;</span><br><span class="line">                gridIndex: <span class="number">0</span>,</span><br><span class="line">                type: <span class="string">"value"</span>,</span><br><span class="line">                position: <span class="string">"top"</span>,</span><br><span class="line">                inverse: <span class="literal">true</span>, </span><br><span class="line">                axisLine: &#123;</span><br><span class="line">                    show: <span class="literal">false</span></span><br><span class="line">                &#125;,</span><br><span class="line">                axisTick: &#123;</span><br><span class="line">                    show: <span class="literal">false</span></span><br><span class="line">                &#125;,</span><br><span class="line">                axisLabel: &#123;</span><br><span class="line">                    show: <span class="literal">true</span>,</span><br><span class="line">                    textStyle: &#123;</span><br><span class="line">                        color: <span class="string">"#fff"</span>,</span><br><span class="line">                        fontSize: <span class="number">1</span></span><br><span class="line">                    &#125;,</span><br><span class="line">                    position: <span class="string">"left"</span>,</span><br><span class="line">                    left: <span class="number">0</span></span><br><span class="line">                &#125;,</span><br><span class="line">                splitLine: &#123;</span><br><span class="line">                    show: <span class="literal">false</span></span><br><span class="line">                &#125;</span><br><span class="line">            &#125;,</span><br><span class="line">            &#123;</span><br><span class="line">                gridIndex: <span class="number">1</span>,</span><br><span class="line">                show: <span class="literal">false</span></span><br><span class="line">            &#125;,</span><br><span class="line">            &#123;</span><br><span class="line">                <span class="comment">//右侧区域</span></span><br><span class="line">                gridIndex: <span class="number">2</span>,</span><br><span class="line">                type: <span class="string">"value"</span>,</span><br><span class="line">                position: <span class="string">"top"</span>,</span><br><span class="line">                inverse: <span class="literal">false</span>,</span><br><span class="line">                axisLine: &#123;</span><br><span class="line">                    show: <span class="literal">false</span></span><br><span class="line">                &#125;,</span><br><span class="line">                axisTick: &#123;</span><br><span class="line">                    show: <span class="literal">false</span></span><br><span class="line">                &#125;,</span><br><span class="line">                axisLabel: &#123;</span><br><span class="line">                    show: <span class="literal">true</span>,</span><br><span class="line">                    textStyle: &#123;</span><br><span class="line">                        color: <span class="string">"#fff"</span>,</span><br><span class="line">                        fontSize: <span class="number">12</span></span><br><span class="line">                    &#125;</span><br><span class="line">                &#125;,</span><br><span class="line">                splitLine: &#123;</span><br><span class="line">                    show: <span class="literal">false</span></span><br><span class="line">                &#125;</span><br><span class="line">            &#125;</span><br><span class="line">        ],</span><br><span class="line">        <span class="comment">//y轴线配置</span></span><br><span class="line">        yAxis: [</span><br><span class="line">            &#123;</span><br><span class="line">                <span class="comment">//左侧区域</span></span><br><span class="line">                gridIndex: <span class="number">0</span>,</span><br><span class="line">                type: <span class="string">"category"</span>,</span><br><span class="line">                inverse: <span class="literal">true</span>,</span><br><span class="line">                axisLine: &#123;</span><br><span class="line">                    show: <span class="literal">false</span></span><br><span class="line">                &#125;,</span><br><span class="line">                axisTick: &#123;</span><br><span class="line">                    show: <span class="literal">false</span>,</span><br><span class="line">                &#125;,</span><br><span class="line">                axisLabel: &#123;</span><br><span class="line">                    show: <span class="literal">false</span></span><br><span class="line">                &#125;,</span><br><span class="line">                <span class="comment">// data: [0,1,2,3,4,5,6,7,8,9]</span></span><br><span class="line">            &#125;,</span><br><span class="line">            &#123;</span><br><span class="line">                gridIndex: <span class="number">1</span>,</span><br><span class="line">                type: <span class="string">"category"</span>,</span><br><span class="line">                axisLine: &#123;</span><br><span class="line">                    show: <span class="literal">false</span></span><br><span class="line">                &#125;,</span><br><span class="line">                axisTick: &#123;</span><br><span class="line">                    show: <span class="literal">false</span></span><br><span class="line">                &#125;,</span><br><span class="line">                axisLabel: &#123;</span><br><span class="line">                    show: <span class="literal">true</span>,</span><br><span class="line">                    textStyle: &#123;</span><br><span class="line">                        color: <span class="string">"#000"</span>,</span><br><span class="line">                        fontSize: <span class="number">12</span></span><br><span class="line">                    &#125;</span><br><span class="line">                &#125;,</span><br><span class="line">                data: [<span class="number">0</span>,<span class="number">1</span>,<span class="number">2</span>,<span class="number">3</span>,<span class="number">4</span>,<span class="number">5</span>,<span class="number">6</span>,<span class="number">7</span>,<span class="number">8</span>,<span class="number">90</span>]</span><br><span class="line">            &#125;,</span><br><span class="line">            &#123;</span><br><span class="line">                gridIndex: <span class="number">2</span>,</span><br><span class="line">                type: <span class="string">"category"</span>,</span><br><span class="line">                inverse: <span class="literal">true</span>,</span><br><span class="line">                axisLine: &#123;</span><br><span class="line">                    show: <span class="literal">false</span></span><br><span class="line">                &#125;,</span><br><span class="line">                axisTick: &#123;</span><br><span class="line">                    show: <span class="literal">false</span>,</span><br><span class="line">                    lineStyle: &#123;</span><br><span class="line">                        color: <span class="string">"#fff"</span></span><br><span class="line">                    &#125;</span><br><span class="line">                &#125;,</span><br><span class="line">                axisLabel: &#123;</span><br><span class="line">                    show: <span class="literal">false</span></span><br><span class="line">                &#125;,</span><br><span class="line">                <span class="comment">// data: [432,123,357,732,145,643,337,864,253,218]</span></span><br><span class="line">            &#125;</span><br><span class="line">        ],</span><br><span class="line">        series: [</span><br><span class="line">            &#123;</span><br><span class="line">                name: <span class="string">"金额"</span>,</span><br><span class="line">                type: <span class="string">"bar"</span>,</span><br><span class="line">                barWidth: <span class="number">6</span>,</span><br><span class="line">                xAxisIndex: <span class="number">0</span>,</span><br><span class="line">                yAxisIndex: <span class="number">0</span>,</span><br><span class="line">                label: &#123;</span><br><span class="line">                    normal: &#123;</span><br><span class="line">                        show: <span class="literal">true</span>,</span><br><span class="line">                        position: <span class="string">"left"</span>,</span><br><span class="line">                        textStyle: &#123;</span><br><span class="line">                            color: <span class="string">"#000"</span>,</span><br><span class="line">                            fontSize: <span class="string">"12px"</span></span><br><span class="line">                        &#125;</span><br><span class="line">                    &#125;</span><br><span class="line">                &#125;,</span><br><span class="line">                itemStyle: &#123;</span><br><span class="line">                    normal: &#123;</span><br><span class="line">                        show: <span class="literal">true</span>,</span><br><span class="line">                        color: <span class="function"><span class="keyword">function</span>(<span class="params">params</span>) </span>&#123;</span><br><span class="line">                            <span class="keyword">let</span> num = colorArray.length;</span><br><span class="line">                            <span class="keyword">return</span> &#123;</span><br><span class="line">                                type: <span class="string">"linear"</span>,</span><br><span class="line">                                colorStops: [</span><br><span class="line">                                    &#123;</span><br><span class="line">                                        offset: <span class="number">0</span>,</span><br><span class="line">                                        color:</span><br><span class="line">                                            colorArray[</span><br><span class="line">                                                params.dataIndex %</span><br><span class="line">                                                    num</span><br><span class="line">                                            ].bottom</span><br><span class="line">                                    &#125;,</span><br><span class="line">                                    &#123;</span><br><span class="line">                                        offset: <span class="number">1</span>,</span><br><span class="line">                                        color:</span><br><span class="line">                                            colorArray[</span><br><span class="line">                                                params.dataIndex %</span><br><span class="line">                                                    num</span><br><span class="line">                                            ].top</span><br><span class="line">                                    &#125;</span><br><span class="line">                                ]</span><br><span class="line">                            &#125;;</span><br><span class="line">                        &#125;,</span><br><span class="line">                        barBorderRadius: <span class="number">10</span>,</span><br><span class="line">                        borderWidth: <span class="number">0</span>,</span><br><span class="line">                        borderColor: <span class="string">"#333"</span></span><br><span class="line">                    &#125;</span><br><span class="line">                &#125;,</span><br><span class="line">                data: [<span class="number">10</span>,<span class="number">30</span>,<span class="number">20</span>,<span class="number">40</span>,<span class="number">20</span>,<span class="number">50</span>,<span class="number">45</span>,<span class="number">65</span>,<span class="number">76</span>,<span class="number">87</span>]</span><br><span class="line">            &#125;,</span><br><span class="line">            &#123;</span><br><span class="line">                name: <span class="string">"票数"</span>,</span><br><span class="line">                type: <span class="string">"bar"</span>,</span><br><span class="line">                barWidth: <span class="number">6</span>,</span><br><span class="line">                xAxisIndex: <span class="number">2</span>,</span><br><span class="line">                yAxisIndex: <span class="number">2</span>,</span><br><span class="line">                label: &#123;</span><br><span class="line">                    normal: &#123;</span><br><span class="line">                        show: <span class="literal">true</span>,</span><br><span class="line">                        position: <span class="string">"right"</span>,</span><br><span class="line">                        textStyle: &#123;</span><br><span class="line">                            color: <span class="string">"#000"</span>,</span><br><span class="line">                            fontSize: <span class="number">10</span></span><br><span class="line">                        &#125;</span><br><span class="line">                    &#125;</span><br><span class="line">                &#125;,</span><br><span class="line">                itemStyle: &#123;</span><br><span class="line">                    normal: &#123;</span><br><span class="line">                        color: <span class="function"><span class="keyword">function</span>(<span class="params">params</span>) </span>&#123;</span><br><span class="line">                            <span class="keyword">let</span> num = colorArray.length;</span><br><span class="line">                            <span class="keyword">return</span> &#123;</span><br><span class="line">                                type: <span class="string">"linear"</span>,</span><br><span class="line">                                colorStops: [</span><br><span class="line">                                    &#123;</span><br><span class="line">                                        offset: <span class="number">0</span>,</span><br><span class="line">                                        color:</span><br><span class="line">                                            colorArray[</span><br><span class="line">                                                params.dataIndex %</span><br><span class="line">                                                    num</span><br><span class="line">                                            ].bottom</span><br><span class="line">                                    &#125;,</span><br><span class="line">                                    &#123;</span><br><span class="line">                                        offset: <span class="number">1</span>,</span><br><span class="line">                                        color:</span><br><span class="line">                                            colorArray[</span><br><span class="line">                                                params.dataIndex %</span><br><span class="line">                                                    num</span><br><span class="line">                                            ].top</span><br><span class="line">                                    &#125;,</span><br><span class="line">                          </span><br><span class="line">                                ]</span><br><span class="line">                            &#125;;</span><br><span class="line">                        &#125;,</span><br><span class="line">                        barBorderRadius: <span class="number">10</span>,</span><br><span class="line">                        borderWidth: <span class="number">0</span>,</span><br><span class="line">                        borderColor: <span class="string">"#333"</span></span><br><span class="line">                    &#125;</span><br><span class="line">                &#125;,</span><br><span class="line">                data: [<span class="number">432</span>,<span class="number">123</span>,<span class="number">357</span>,<span class="number">732</span>,<span class="number">145</span>,<span class="number">643</span>,<span class="number">337</span>,<span class="number">864</span>,<span class="number">253</span>,<span class="number">218</span>]</span><br><span class="line">            &#125;</span><br><span class="line">        ]</span><br><span class="line">&#125;;</span><br><span class="line"><span class="built_in">window</span>.onresize = <span class="function"><span class="keyword">function</span>(<span class="params"></span>) </span>&#123;</span><br><span class="line">    echartDemo.resize();</span><br><span class="line">&#125;;</span><br><span class="line">echartDemo.setOption(option);</span><br></pre></td></tr></table></figure>
+<p>五 极坐标系柱状态</p>
+<figure class="highlight html"><table><tr><td class="gutter"><pre><span class="line">1</span><br></pre></td><td class="code"><pre><span class="line"><span class="tag">&lt;<span class="name">div</span> <span class="attr">id</span>=<span class="string">"main1"</span> <span class="attr">style</span>=<span class="string">"width: 600px;height:400px;"</span>&gt;</span><span class="tag">&lt;/<span class="name">div</span>&gt;</span>      <span class="comment">&lt;!-- html --&gt;</span></span><br></pre></td></tr></table></figure>
+<figure class="highlight js"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br><span class="line">8</span><br><span class="line">9</span><br><span class="line">10</span><br><span class="line">11</span><br><span class="line">12</span><br><span class="line">13</span><br><span class="line">14</span><br><span class="line">15</span><br><span class="line">16</span><br><span class="line">17</span><br><span class="line">18</span><br><span class="line">19</span><br><span class="line">20</span><br><span class="line">21</span><br><span class="line">22</span><br><span class="line">23</span><br><span class="line">24</span><br><span class="line">25</span><br><span class="line">26</span><br><span class="line">27</span><br><span class="line">28</span><br><span class="line">29</span><br><span class="line">30</span><br><span class="line">31</span><br><span class="line">32</span><br><span class="line">33</span><br><span class="line">34</span><br><span class="line">35</span><br><span class="line">36</span><br><span class="line">37</span><br><span class="line">38</span><br><span class="line">39</span><br><span class="line">40</span><br><span class="line">41</span><br><span class="line">42</span><br><span class="line">43</span><br><span class="line">44</span><br><span class="line">45</span><br><span class="line">46</span><br><span class="line">47</span><br><span class="line">48</span><br><span class="line">49</span><br><span class="line">50</span><br><span class="line">51</span><br><span class="line">52</span><br><span class="line">53</span><br><span class="line">54</span><br><span class="line">55</span><br><span class="line">56</span><br><span class="line">57</span><br><span class="line">58</span><br><span class="line">59</span><br><span class="line">60</span><br><span class="line">61</span><br><span class="line">62</span><br><span class="line">63</span><br><span class="line">64</span><br><span class="line">65</span><br><span class="line">66</span><br><span class="line">67</span><br><span class="line">68</span><br><span class="line">69</span><br><span class="line">70</span><br><span class="line">71</span><br><span class="line">72</span><br><span class="line">73</span><br><span class="line">74</span><br><span class="line">75</span><br><span class="line">76</span><br><span class="line">77</span><br><span class="line">78</span><br><span class="line">79</span><br><span class="line">80</span><br><span class="line">81</span><br><span class="line">82</span><br><span class="line">83</span><br><span class="line">84</span><br><span class="line">85</span><br><span class="line">86</span><br><span class="line">87</span><br><span class="line">88</span><br><span class="line">89</span><br><span class="line">90</span><br><span class="line">91</span><br><span class="line">92</span><br><span class="line">93</span><br><span class="line">94</span><br><span class="line">95</span><br><span class="line">96</span><br><span class="line">97</span><br><span class="line">98</span><br><span class="line">99</span><br><span class="line">100</span><br><span class="line">101</span><br><span class="line">102</span><br><span class="line">103</span><br><span class="line">104</span><br></pre></td><td class="code"><pre><span class="line"><span class="keyword">var</span> echarts = <span class="built_in">require</span>(<span class="string">"echarts"</span>);</span><br><span class="line"><span class="keyword">var</span> echartDemo = echarts.init(<span class="built_in">document</span>.getElementById(<span class="string">"main1"</span>));</span><br><span class="line"><span class="keyword">var</span> option = &#123;</span><br><span class="line">    title: &#123;</span><br><span class="line">        text: <span class="string">"24.67%"</span>,   <span class="comment">// 主标题</span></span><br><span class="line">        subtext: <span class="string">"Sub Title"</span>,   <span class="comment">// 副标题</span></span><br><span class="line">        textStyle: &#123;       <span class="comment">// 主标题样式</span></span><br><span class="line">            color: <span class="string">"#383B4F"</span>,</span><br><span class="line">            fontSize: <span class="number">30</span></span><br><span class="line">        &#125;,</span><br><span class="line">        subtextStyle: &#123;    <span class="comment">// 副标题样式</span></span><br><span class="line">            color: <span class="string">"#909090"</span></span><br><span class="line">        &#125;,</span><br><span class="line">        itemGap: <span class="number">100</span>, <span class="comment">// 主副标题距离</span></span><br><span class="line">        left: <span class="string">"center"</span>, <span class="comment">//标题位置</span></span><br><span class="line">        top: <span class="string">"30%"</span></span><br><span class="line">    &#125;,</span><br><span class="line">    angleAxis: &#123;</span><br><span class="line">        <span class="comment">//极坐标系的角度轴</span></span><br><span class="line">        max: <span class="number">100</span>, <span class="comment">// 最大值</span></span><br><span class="line">        clockwise: <span class="literal">true</span>, <span class="comment">// 逆时针</span></span><br><span class="line">        <span class="comment">// 隐藏刻度线</span></span><br><span class="line">        axisLine: &#123;</span><br><span class="line">            show: <span class="literal">false</span></span><br><span class="line">        &#125;,</span><br><span class="line">        axisTick: &#123;</span><br><span class="line">            show: <span class="literal">false</span></span><br><span class="line">        &#125;,</span><br><span class="line">        axisLabel: &#123;</span><br><span class="line">            show: <span class="literal">false</span></span><br><span class="line">        &#125;,</span><br><span class="line">        splitLine: &#123;</span><br><span class="line">            show: <span class="literal">false</span></span><br><span class="line">        &#125;</span><br><span class="line">    &#125;,</span><br><span class="line">    radiusAxis: &#123;</span><br><span class="line">        <span class="comment">//极坐标系的径向轴。</span></span><br><span class="line">        type: <span class="string">"category"</span>,</span><br><span class="line">        <span class="comment">// 隐藏刻度线</span></span><br><span class="line">        axisLine: &#123;</span><br><span class="line">            show: <span class="literal">false</span></span><br><span class="line">        &#125;,</span><br><span class="line">        axisTick: &#123;</span><br><span class="line">            show: <span class="literal">false</span></span><br><span class="line">        &#125;,</span><br><span class="line">        axisLabel: &#123;</span><br><span class="line">            show: <span class="literal">false</span></span><br><span class="line">        &#125;,</span><br><span class="line">        splitLine: &#123;</span><br><span class="line">            show: <span class="literal">false</span></span><br><span class="line">        &#125;</span><br><span class="line">    &#125;,</span><br><span class="line">    polar: &#123;</span><br><span class="line">        center: [<span class="string">"50%"</span>, <span class="string">"50%"</span>], <span class="comment">//坐标系的中心（圆心）坐标，数组的第一项是横坐标，第二项是纵坐标</span></span><br><span class="line">        radius: <span class="string">"160%"</span> <span class="comment">//极坐标系的半径。</span></span><br><span class="line">    &#125;,</span><br><span class="line">    series: [</span><br><span class="line">        &#123;</span><br><span class="line">            type: <span class="string">"bar"</span>,</span><br><span class="line">            data: [</span><br><span class="line">                &#123;</span><br><span class="line">                    value: <span class="string">"24.67"</span>,</span><br><span class="line">                    itemStyle: &#123;</span><br><span class="line">                            color: <span class="keyword">new</span> echarts.graphic.LinearGradient(<span class="number">1</span>,<span class="number">0</span>,<span class="number">0</span>,<span class="number">0</span>,</span><br><span class="line">                                [&#123;</span><br><span class="line">                                    offset: <span class="number">0</span>,</span><br><span class="line">                                    color: <span class="string">"#FF1B4E"</span></span><br><span class="line">                                &#125;,</span><br><span class="line">                                &#123;</span><br><span class="line">                                    offset: <span class="number">1</span>,</span><br><span class="line">                                    color: <span class="string">"#FFAD50"</span></span><br><span class="line">                                &#125;</span><br><span class="line">                            ]</span><br><span class="line">                        )</span><br><span class="line">                    &#125;</span><br><span class="line">                &#125;</span><br><span class="line">            ],</span><br><span class="line">            coordinateSystem: <span class="string">"polar"</span>,   <span class="comment">//该系列使用的坐标系，</span></span><br><span class="line">            roundCap: <span class="literal">true</span>,  <span class="comment">//是否在环形柱条两侧使用圆弧效果。(4.21版本无效)</span></span><br><span class="line">            barWidth: <span class="number">5</span>,  </span><br><span class="line">            animationEasing: <span class="string">'bounceOut'</span>, <span class="comment">// 初始动画</span></span><br><span class="line">            barGap: <span class="string">"-100%"</span>, <span class="comment">// 两环重叠</span></span><br><span class="line">            z: <span class="number">2</span>    <span class="comment">// 权重</span></span><br><span class="line">        &#125;,</span><br><span class="line">        &#123;</span><br><span class="line">            <span class="comment">// 灰色环</span></span><br><span class="line">            type: <span class="string">"bar"</span>,</span><br><span class="line">            data: [</span><br><span class="line">                &#123;</span><br><span class="line">                    value: <span class="number">100</span>,</span><br><span class="line">                    itemStyle: &#123;</span><br><span class="line">                        color: <span class="string">"#EBF4F7"</span></span><br><span class="line">                    &#125;</span><br><span class="line">                &#125;</span><br><span class="line">            ],</span><br><span class="line">            coordinateSystem: <span class="string">"polar"</span>,</span><br><span class="line">            roundCap: <span class="literal">true</span>,   </span><br><span class="line">            barWidth: <span class="number">5</span>,</span><br><span class="line">            barGap: <span class="string">"-100%"</span>, <span class="comment">// 两环重叠</span></span><br><span class="line">            z: <span class="number">1</span></span><br><span class="line">        &#125;</span><br><span class="line">    ]</span><br><span class="line">&#125;;</span><br><span class="line">echartDemo.setOption(option);</span><br></pre></td></tr></table></figure>
+<p>tips：roundCap: true,在最新的@4.8版本生效，在@4.21版本不生效</p>
+
+      
+    </div>
+    
+    
+    
+
+    
+
+    
+
+    
+
+    <footer class="post-footer">
+      
+        <div class="post-tags">
+          
+            <a href="/tags/vue-echarts/" rel="tag"><i class="fa fa-tag"></i>  vue echarts</a>
+          
+        </div>
+      
+
+      
+      
+      
+
+      
+        <div class="post-nav">
+          <div class="post-nav-next post-nav-item">
+            
+              <a href="/2020/07/18/vue%E4%B8%AD%E7%9A%84%E4%B8%80%E4%BA%9B%E7%9F%A5%E8%AF%86%E7%82%B9/" rel="next" title="vue中的一些知识点">
+                <i class="fa fa-chevron-left"></i> vue中的一些知识点
+              </a>
+            
+          </div>
+
+          <span class="post-nav-divider"></span>
+
+          <div class="post-nav-prev post-nav-item">
+            
+              <a href="/2020/07/21/git-%E5%B8%B8%E7%94%A8%E5%91%BD%E4%BB%A4/" rel="prev" title="git 常用命令">
+                git 常用命令 <i class="fa fa-chevron-right"></i>
+              </a>
+            
+          </div>
+        </div>
+      
+
+      
+      
+    </footer>
+  </div>
+  
+  
+  
+  </article>
+
+
+
+    <div class="post-spread">
+      
+    </div>
+  </div>
+
+
+          </div>
+          
+
+
+          
+
+  
+
+
+
+        </div>
+        
+          
+  
+  <div class="sidebar-toggle">
+    <div class="sidebar-toggle-line-wrap">
+      <span class="sidebar-toggle-line sidebar-toggle-line-first"></span>
+      <span class="sidebar-toggle-line sidebar-toggle-line-middle"></span>
+      <span class="sidebar-toggle-line sidebar-toggle-line-last"></span>
+    </div>
+  </div>
+
+  <aside id="sidebar" class="sidebar">
+    
+    <div class="sidebar-inner">
+
+      
+
+      
+        <ul class="sidebar-nav motion-element">
+          <li class="sidebar-nav-toc sidebar-nav-active" data-target="post-toc-wrap">
+            文章目录
+          </li>
+          <li class="sidebar-nav-overview" data-target="site-overview-wrap">
+            站点概览
+          </li>
+        </ul>
+      
+
+      <section class="site-overview-wrap sidebar-panel">
+        <div class="site-overview">
+          <div class="site-author motion-element" itemprop="author" itemscope itemtype="http://schema.org/Person">
+            
+              <img class="site-author-image" itemprop="image"
+                src="/uploads/images/avatar.jpg"
+                alt="zhou" />
+            
+              <p class="site-author-name" itemprop="name">zhou</p>
+              <p class="site-description motion-element" itemprop="description"></p>
+          </div>
+
+          <nav class="site-state motion-element">
+
+            
+              <div class="site-state-item site-state-posts">
+              
+                <a href="/archives/">
+              
+                  <span class="site-state-item-count">38</span>
+                  <span class="site-state-item-name">日志</span>
+                </a>
+              </div>
+            
+
+            
+              
+              
+              <div class="site-state-item site-state-categories">
+                <a href="/categories/index.html">
+                  <span class="site-state-item-count">15</span>
+                  <span class="site-state-item-name">分类</span>
+                </a>
+              </div>
+            
+
+            
+              
+              
+              <div class="site-state-item site-state-tags">
+                <a href="/tags/index.html">
+                  <span class="site-state-item-count">20</span>
+                  <span class="site-state-item-name">标签</span>
+                </a>
+              </div>
+            
+
+          </nav>
+
+          
+
+          
+
+          
+          
+
+          
+          
+
+          
+
+        </div>
+      </section>
+
+      
+      <!--noindex-->
+        <section class="post-toc-wrap motion-element sidebar-panel sidebar-panel-active">
+          <div class="post-toc">
+
+            
+              
+            
+
+            
+              <div class="post-toc-content"><ol class="nav"><li class="nav-item nav-level-2"><a class="nav-link" href="#一-安装并引入"><span class="nav-text">一 安装并引入</span></a><ol class="nav-child"><li class="nav-item nav-level-3"><a class="nav-link" href="#1-main-js-中全局引入"><span class="nav-text">1. main.js 中全局引入</span></a></li><li class="nav-item nav-level-3"><a class="nav-link" href="#2-直接在vue文件中使用"><span class="nav-text">2. 直接在vue文件中使用</span></a></li></ol></li><li class="nav-item nav-level-2"><a class="nav-link" href="#二-柱状图"><span class="nav-text">二 柱状图</span></a></li><li class="nav-item nav-level-2"><a class="nav-link" href="#三-折线图"><span class="nav-text">三 折线图</span></a></li><li class="nav-item nav-level-2"><a class="nav-link" href="#四-双向柱状图"><span class="nav-text">四 双向柱状图</span></a></li></ol></div>
+            
+
+          </div>
+        </section>
+      <!--/noindex-->
+      
+
+      
+
+    </div>
+  </aside>
+
+
+        
+      </div>
+    </main>
+
+    <footer id="footer" class="footer">
+      <div class="footer-inner">
+        <script async src="https://busuanzi.ibruce.info/busuanzi/2.3/busuanzi.pure.mini.js"></script>
+<div class="copyright">&copy; <span itemprop="copyrightYear">2021</span>
+  <span class="with-love">
+    <i class="fa fa-user"></i>
+  </span>
+  <span class="author" itemprop="copyrightHolder">zhou</span>
+
+  
+</div>
+
+<div class="theme-info">
+  <div class="powered-by"></div>
+  <span class="post-count">博客全站共20.9k字</span>
+</div>
+
+
+  <span class="post-meta-divider">|</span>
+
+
+<div class="powered-by">
+<i class="fa fa-user-md"></i>
+  您是本站第<span id="busuanzi_value_site_pv"></span>位访客
+</div>
+
+
+
+        
+
+
+
+
+
+
+
+        
+      </div>
+    </footer>
+
+    
+      <div class="back-to-top">
+        <i class="fa fa-arrow-up"></i>
+        
+      </div>
+    
+
+    
+
+  </div>
+
+  
+
+<script type="text/javascript">
+  if (Object.prototype.toString.call(window.Promise) !== '[object Function]') {
+    window.Promise = null;
+  }
+</script>
+
+
+
+
+
+
+
+
+
+  
+
+
+  
+
+
+
+
+
+
+
+
+
+
+
+  
+  
+    <script type="text/javascript" src="/lib/jquery/index.js?v=2.1.3"></script>
+  
+
+  
+  
+    <script type="text/javascript" src="/lib/fastclick/lib/fastclick.min.js?v=1.0.6"></script>
+  
+
+  
+  
+    <script type="text/javascript" src="/lib/jquery_lazyload/jquery.lazyload.js?v=1.9.7"></script>
+  
+
+  
+  
+    <script type="text/javascript" src="/lib/velocity/velocity.min.js?v=1.2.1"></script>
+  
+
+  
+  
+    <script type="text/javascript" src="/lib/velocity/velocity.ui.min.js?v=1.2.1"></script>
+  
+
+  
+  
+    <script type="text/javascript" src="/lib/fancybox/source/jquery.fancybox.pack.js?v=2.1.5"></script>
+  
+
+  
+  
+    <script type="text/javascript" src="/lib/canvas-nest/canvas-nest.min.js"></script>
+  
+
+
+  
+
+
+  <script type="text/javascript" src="/js/src/utils.js?v=5.1.4"></script>
+
+  <script type="text/javascript" src="/js/src/motion.js?v=5.1.4"></script>
+
+
+
+  
+  
+
+
+  <script type="text/javascript" src="/js/src/affix.js?v=5.1.4"></script>
+
+  <script type="text/javascript" src="/js/src/schemes/pisces.js?v=5.1.4"></script>
+
+
+
+  
+  <script type="text/javascript" src="/js/src/scrollspy.js?v=5.1.4"></script>
+<script type="text/javascript" src="/js/src/post-details.js?v=5.1.4"></script>
+
+
+
+  
+
+
+  <script type="text/javascript" src="/js/src/bootstrap.js?v=5.1.4"></script>
+
+
+
+  
+
+
+  
+
+
+
+
+	
+
+
+
+
+
+  
+
+
+
+
+
+  
+
+
+
+
+
+
+
+
+
+
+
+
+  
+
+
+
+
+
+  
+
+  
+
+  
+
+  
+  
+
+  
+
+  
+
+  
+
+  <link rel="stylesheet" href="/dist/APlayer.min.css">
+  <div id="aplayer"></div>
+  <script type="text/javascript" src="/dist/APlayer.min.js"></script>
+  <script type="text/javascript" src="/dist/music.js"></script>
+    <!-- 代码块复制功能 -->
+  <script type="text/javascript" src="/js/src/clipboard.min.js"></script>  
+  <script type="text/javascript" src="/js/src/clipboard-use.js"></script>
+<script src="/live2dw/lib/L2Dwidget.min.js?094cbace49a39548bed64abff5988b05"></script><script>L2Dwidget.init({"model":{"scale":1,"hHeadPos":0.5,"vHeadPos":0.618},"display":{"position":"right","width":150,"height":300,"hOffset":80,"vOffset":-20},"mobile":{"show":false},"react":{"opacity":0.7},"log":false,"pluginJsPath":"lib/","pluginModelPath":"assets/","pluginRootPath":"live2dw/","tagMode":false});</script></body>
+</html>
